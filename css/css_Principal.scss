@@ -1,0 +1,81 @@
+body {	
+	background-color: #303030;
+    padding: 1vw;	
+    }
+
+.menu{
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.menu * {
+    margin: 0.5em;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: transparent;
+    align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.item{
+    display: flex;
+    flex-flow: row wrap;    
+    background: transparent;  
+    }
+
+.item * {
+  margin: 0.5vw;
+  margin-left: 15px;
+  padding: 0.5vw;
+
+}
+
+.cell {
+    flex: 1 0 60%;    
+    color: black;
+    background-color: white; 
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    border-radius: 5px;
+    border-style:groove;
+    border-bottom: 0.5vw solid #707070;
+    align-self: center;
+    }
+
+
+.cellBotonMenu
+  {    
+   
+  }
+
+  .cellBotonMenu * {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: white;
+    margin: 0.5em;
+}
+
+@media all and (min-width: 500px) {
+
+ .cell{
+    font-size: 3em;
+    }
+
+
+}

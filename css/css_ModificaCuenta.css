@@ -1,0 +1,103 @@
+body {
+  background-color: #303030;
+  padding: 1vw;
+}
+
+.menu {
+  background-color: #499bea;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5em;
+  border-radius: 10px;
+}
+
+.menu * {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: white;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.item * {
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.cell {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 80%;
+          flex: 1 0 80%;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 5px;
+  border-style: groove;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.cellBotonBorrar * {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: red;
+}
+
+.containerNombre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.txtNombre {
+  margin: 1vw 2vw;
+  padding: 2vw;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 2em;
+  border-radius: 10px;
+}
+
+@media all and (min-width: 500px) {
+  .cell {
+    font-size: 2em;
+  }
+}
+/*# sourceMappingURL=css_ModificaCuenta.css.map */

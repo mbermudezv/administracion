@@ -1,0 +1,213 @@
+@-ms-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+@font-face {
+  font-family: "CabinSketch";
+  src: url(../fonts/CabinSketch.otf) format("truetype");
+}
+
+html {
+  overflow-y: auto;
+}
+
+img,
+audio,
+video,
+canvas {
+  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+img,
+audio,
+video,
+canvas {
+  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #303030;
+}
+
+.menuContenedor {
+  background-color: #499bea;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  border-radius: 10px;
+}
+
+.menuContenedor * {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: white;
+  margin: 5px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contenedorPrincipal {
+  margin: 0%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contenedorMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+  margin: 0%;
+}
+
+.menuEncabezado {
+  border-radius: 10px;
+}
+
+.MenuCartaContenedor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+}
+
+.txtMenu {
+  background: url("../img/center.jpg");
+  font-size: 3em;
+  font-family: CabinSketch;
+  color: #ffffff;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.menuButtom {
+  background: url("../img/bottom.jpg");
+  border-radius: 10px;
+}
+
+.contenedorMarca {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.divTitulo {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2em;
+  color: yellow;
+  font-weight: bold;
+  background-color: gray;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.divNombre {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2em;
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.containerTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  padding: 10px;
+}
+
+.txtMarca {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: transparent;
+  color: white;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2em;
+  border-radius: 5px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  padding: 10px;
+}
+
+.contenedorFrase {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.imagenMarca {
+  padding: 1px;
+  margin: 1px;
+  border-radius: 10%;
+  max-width: 70%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+/*# sourceMappingURL=css_marca.css.map */

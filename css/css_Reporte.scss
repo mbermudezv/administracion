@@ -1,0 +1,277 @@
+@viewport {
+  width: device-width;
+}
+html {
+	overflow-y: auto;
+}
+
+body {	
+	margin: 0%;
+  display: flex;
+  flex-direction: column;	
+	background-color: #303030;	
+}
+.menu_container{
+    display: flex;
+    justify-content: center;
+}
+.menu {
+  background-color: #499bea;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0.5em;
+  border-radius: 10px; 
+}
+
+.menu * {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: white; 
+}
+.containerNombre {
+  display: flex;
+  flex-flow: column wrap; 
+}
+.txtNombre {
+  margin: 1vw 2vw;
+  padding: 2vw;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 2em;
+  border-radius: 10px; 
+}
+
+.menu_export {
+  background-color: transparent;
+  display: flex;
+  flex-flow: row wrap;  
+  justify-content: center;
+  border-radius: 10px; 
+}
+
+.menu_export * {
+  width: 2em;
+  height: 2em;
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contDate{
+   display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+}
+
+.contDate * {
+  margin: 1vw;
+  padding: 1vw;
+}
+
+
+.itemDate
+{
+flex: 0 0 50%;
+display: flex;
+flex-flow: row wrap;
+justify-content: flex-end;
+}
+
+.itemDate * {
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.btnbuscar {
+    align-self: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.btnbuscar{
+
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: white;
+}
+
+.ui-datepicker {
+    padding: .2em .2em 0;
+    display: none;   
+    background: #499bea;  
+}
+
+.ui-datepicker .ui-datepicker-title {
+    margin: 0 2.3em;
+    line-height: 1.8em;
+    text-align: center;
+    color:#FFFFFF;
+    background: #499bea;  
+}
+.ui-datepicker table {
+    width: 100%;
+    font-size: .8em;
+    border-collapse: collapse;
+    font-family:verdana;
+    margin: 0 0 .4em;
+    color:white;
+    background:#303030;    
+}
+/*This is date TD */
+.ui-datepicker td {
+
+    border: 0;
+    padding: 1px;    
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+    display: block;
+    padding: .8em;
+    text-align: right;
+    text-decoration: underline;
+    color:white;
+}
+
+.encabezado{
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  margin: 2px;
+  font-weight: bold;
+}
+
+.logo{
+  display: flex;
+}
+
+.logo *{
+  width: 6em;
+  height: 6em;
+  margin: 1vw;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+ 
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 2vw;
+  padding: 2vw;
+  text-decoration: none;
+  border-style:groove;
+  color: black;
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace; 
+  font-size: 1em;  
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.tabla_encabezado{
+  display: flex;
+  flex-wrap: wrap;  
+  font-size: 1em;
+  background-color: white;
+  border-radius: 5px;
+  margin: 2px;
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.tabla_encabezado_item{        
+  color: black; 
+  text-align: center;
+  margin: 1vw;
+}
+
+.tabla_encabezado_rango{
+  display: flex;
+  flex-wrap: nowrap;  
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1em;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tabla_encabezado_rango_item {        
+  color: black; 
+  text-align: center;
+  margin: 1vw;
+}
+
+.tabla_titulo {
+  display: flex;
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1em;
+  background-color: white;
+}
+
+.tabla_titulo_item{
+  flex: 1;
+  color: black; 
+  text-align: center;
+  margin: 1vw;
+  border-style:groove;
+  border-radius: 5px;
+}
+
+.tabla {
+  display: flex;
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1em; 
+  background-color: white;
+}
+
+.tabla_item{
+  flex: 1;  
+  color: black; 
+  text-align: center;
+  margin: 1vw; 
+}
+
+.contendor_linea_firma{
+  display: flex;
+  background-color: white;
+}
+.linea_firma{
+  flex: 1;
+  margin: 2vw;
+  color: black; 
+  text-align: center;
+}
+
+.contenedor_nombre_firma {
+  display: flex;
+  text-overflow: ellipsis;  
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 0.5em;
+  background-color: white;
+}
+
+.item_nombre_firma{
+  flex: 1;
+  color: black; 
+  text-align: center;
+  margin: 1vw;
+  border-style:none;
+}

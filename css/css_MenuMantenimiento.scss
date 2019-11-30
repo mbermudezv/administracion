@@ -1,0 +1,62 @@
+$border-radius: 15px;
+$border-style: groove;
+$margin: 1vw;
+$padding: 1vw;
+
+body {	
+	background-color: #303030;
+}
+
+.menu{
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;    
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+.menu * {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: white;
+}
+
+.container {
+	display: flex;
+	flex-flow: column wrap;
+	padding: 2vw;
+}
+
+.txtDescripcion {
+	flex: 1;		
+	background-color: transparent;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;	
+	font-size: 2em;
+    border-radius: 5px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding: 2vw;
+    border-radius: 10px;
+}
+
+.containerCalc{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;		
+	font-family: "Courier New", Courier, monospace;
+	font-size: 5em;
+}
+
+.guardar{	
+	align-self: center;
+	flex-basis: 25%;	
+	background: #499bea;
+	text-align: center;	
+	border-radius: $border-radius;
+	border-style: $border-style;
+	margin: $margin;
+	padding: $padding;	
+}
+

@@ -1,0 +1,97 @@
+body 
+  {	
+	background-color: #303030;
+  padding: 1vw;
+  }
+
+.menu
+  {
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 0.5em;
+    border-radius: 10px;
+  }
+
+.menu * {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: white;
+}
+
+.container
+  {
+    display: flex;
+    flex-direction: column;    
+  }
+
+.item
+    {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    }
+
+.item * {
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.cell 
+    {
+    flex: 1 0 80%;  
+    color: white;
+    background-color: black; 
+    text-decoration: none;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 5px;
+    border-style:groove;
+    font-family: "Lucida Console", Monaco, monospace;
+    }
+
+.cellBotonBorrar
+  {    
+    // align-self: center;
+    // display: flex;
+    // flex-flow: row wrap;
+    // justify-content: center;    
+  }
+
+.cellBotonBorrar * {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: red;
+
+}
+
+.containerNombre 
+  {
+  display: flex;
+  flex-flow: column wrap;
+  }
+
+.txtNombre
+  {
+  margin: 1vw 2vw;
+  padding: 2vw;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace; 
+  color: white;
+  font-size: 2em;
+  border-radius: 10px;  
+  }
+
+  @media all and (min-width: 500px) 
+  {
+
+ .cell
+ {
+    font-size: 2em;
+ }
+ 
+}

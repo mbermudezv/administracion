@@ -1,0 +1,147 @@
+@viewport {
+    width: device-width;
+}
+
+@font-face {
+	    font-family: "CabinSketch";
+	    src: url(../fonts/CabinSketch.otf) format("truetype");
+}
+
+html {
+	overflow-y: auto;
+}
+
+img,
+audio,
+video,
+canvas {
+    max-width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+img,
+audio,
+video,
+canvas {
+    max-width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+	margin: 0%;
+    display: flex;
+    flex-direction: column;	
+	background-color: #303030;
+}
+.menuContenedor{
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;    
+    border-radius: 10px;
+}
+
+.menuContenedor * {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background: white;
+    margin: 5px;
+  	padding: 5px;
+	display: flex;
+  	justify-content: center;
+  	align-items: center;  	
+}
+
+.contenedorPrincipal{
+	margin: 0%;
+	flex-grow: 1;
+	display: flex;
+    
+}
+.contenedorMenu{
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
+	padding: 1em;
+	margin: 0%;
+}
+.menuEncabezado{
+	border-radius: 10px;
+	//width: 80%;
+}
+.MenuCartaContenedor{
+	display: flex;
+	flex-wrap: wrap;
+	//width: 604px;
+	text-align: center;
+}
+.txtMenu{
+	background: url('../img/center.jpg');
+	font-size: 3em;	
+	font-family: CabinSketch;
+	color: #ffffff;
+	flex: 1;
+}
+
+.menuButtom{
+	background: url('../img/bottom.jpg');
+	border-radius: 10px;
+	//width: 80%;
+}
+.contenedorMarca{
+	display: flex;
+	flex-direction: column;	
+}
+.divTitulo{
+	font-family: "Lucida Console", Monaco, monospace;	
+	font-size: 2em;
+	color: yellow;
+	font-weight: bold;
+	background-color: gray;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	border-radius: 10px;
+}
+.divNombre{
+	font-family: "Lucida Console", Monaco, monospace;	
+	font-size: 2em;	
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+}
+.containerTxt{
+	display: flex;
+	flex-flow: column wrap;
+	padding: 10px;
+}
+.txtMarca {
+	flex: 1;	
+	background-color: transparent;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;	
+	font-size: 2em;
+    border-radius: 5px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding: 10px;
+    
+}
+.contenedorFrase{
+	display: flex;
+	justify-content: center;
+}
+.imagenMarca{
+	padding: 1px;
+	margin: 1px;
+	border-radius: 10%;
+	max-width: 70%;
+	align-self: center;
+} 
