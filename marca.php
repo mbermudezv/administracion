@@ -1,6 +1,6 @@
 <?php
 // *********** 
-// Mauricio Bermudez Vargas 20/05/2018 12:10 p.m.
+// Mauricio Bermudez Vargas 29/11/2019 10:12 a.m.
 // ***********
 
 ini_set('memory_limit', '-1');
@@ -33,47 +33,52 @@ $rs = $db->conMenuDescripcion($intMenuId);
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="autor" content="Mauricio Bermúdez Vargas" />
-<meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" type="text/css" href="css/css_marca.css">
-<title>Marca</title>
-<script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="autor" content="Mauricio Bermúdez Vargas" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="css/css_marca1.css">
+    <title>Marca</title>
+    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<div id="menuContenedor" class="menuContenedor">
-	<a id="salir" class="salir" href="seleccion.php"></a>	
+
+<div id="menu">
+	<a id="salir" href="seleccion.php"></a>	
 </div>
-<!-- Contedor Principal -->
-<div id="contenedorPrincipal" class="contenedorPrincipal">
-	<!-- Contenerdor menu -->
-	<div id="contenedorMenu" class="contenedorMenu">
-		<img id="menuEncabezado" class="menuEncabezado" src="img/menu_top.jpg"></img>	
-		<?php
-		if(!empty($rs)) {
-		foreach($rs as $rsMenu) {
-		?>
-		<div id="MenuCartaContenedor" class="MenuCartaContenedor">
-			<div id="txtMenu" class="txtMenu"><?php echo $rsMenu["Menu_Descripcion"]; ?></div>	
-		</div>
-		<?php
-		}
-		$rs = null;
-		}
-		?>
-		<img id="menuButtom" class="menuButtom" src="img/bottom.jpg"></img>
-	</div>
-	<!-- Contenedor de proceso marca -->
-	<div id="contenedorMarca">
-		<div id="divTitulo" class="divTitulo"></div>
-		<div id="divNombre" class="divNombre"></div>
-		<div class="containerTxt">
-			<input type="text" id="txt1" class="txtMarca" name="marca" maxlength="20">
-		</div>
-		<div id="contenedorFrase" class="contenedorFrase">
-			<img id="imagenMarca" class="imagenMarca">
-		</div>
-	</div>
+<div id="mainArea">
+    <!-- Contenerdor menu -->
+    <div id="contenedorMenu">
+        <img id="menuEncabezado" src="img/menu_top.jpg"></img>	
+        <?php
+            if(!empty($rs)) {
+                foreach($rs as $rsMenu) {
+                ?>
+                <div id="MenuCartaContenedor">
+                    <div id="txtMenu"><?php echo $rsMenu["Menu_Descripcion"]; ?></div>	
+                </div>
+                <?php
+            }
+            $rs = null;
+            }
+        ?>
+        <img id="menuButtom" src="img/bottom.jpg"></img>
+    </div>
+
+    <!-- Contenedor de proceso marca -->
+    <div id="contenedorMarca">
+        <div id="divTitulo"></div>
+        <div id="divNombre"></div>
+        <div id="containerTxt">
+            <input type="text" id="txtMarca" name="marca" maxlength="20">
+        </div>
+        <div id="contenedorFrase">
+            <img id="imagenMarca">
+        </div>
+    </div>
+</div>
+<div id="statusBar">
+    <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
+    <a id="linkWappcom"href="https://www.wappcom.net">wappcom.net</a>                                       
 </div>
 
 <script language='javascript'>
@@ -89,9 +94,9 @@ function totalRegistros(intTipo){
 	$.get("sql/selectCountMarcasGestor.php", { tipoRegistro: intTipo })
 	.done(function(data) {
 	if (intTipo==1) {
-		document.getElementById("divTitulo").innerHTML = strSolicitud + ": " + data;		
+		document.getElementById("divTitulo").innerHTML = strSolicitud + " " + data;		
 	} else if (intTipo==2) {
-		document.getElementById("divTitulo").innerHTML = strRegistro + ": " + data;		
+		document.getElementById("divTitulo").innerHTML = strRegistro + " " + data;		
 	}
 	}).fail(function(jqXHR, textStatus, error) {
 	console.log("Error de la aplicación: " + error);
@@ -101,13 +106,16 @@ function totalRegistros(intTipo){
 
 function registrarMarca(intId, intTipo){
 
+	muestraImagen();
+	return false;
+	
 	$.get("sql/selectMarcaRegistradaGestor.php", { tipoRegistro: intTipo, id: intId })
 	.done(function(data) {
 	if (data=="0") {
 		//Registra marca		
 		$.post("sql/insertMarcaGestor.php", { id: intId, seleccion: intTipo })
 		.done(function(data) {
-			document.getElementById('txt1').value = '';
+			document.getElementById('txtMarca').value = '';
 			totalRegistros(intTipo);
 			muestraImagen();		   		
 			}).fail(function(jqXHR, textStatus, error) {
@@ -116,7 +124,7 @@ function registrarMarca(intId, intTipo){
 				});
 	} else if (data=="1") {
 		document.getElementById("divNombre").innerHTML = "Su marca ya ha sido registrada";
-		document.getElementById('txt1').value = '';			
+		document.getElementById('txtMarca').value = '';			
 	} 		
 	}).fail(function(jqXHR, textStatus, error) {
 	console.log("Error de la aplicación: " + error);	
@@ -130,7 +138,7 @@ function verificaSolicitud(intId, intSolicitud){
 	.done(function(data) {
 	if (data=="0") {
 		document.getElementById("divNombre").innerHTML = "No existe solicitud de almuerzo";
-		document.getElementById('txt1').value = '';				
+		document.getElementById('txtMarca').value = '';				
 	} else if (data=="1") {
 		//Registra marca
 		registrarMarca(intId, intSeleccion);
@@ -153,11 +161,11 @@ function muestraImagen() {
 	return false;
 };
 
-document.getElementById("txt1").onkeydown = function(evt) {
+document.getElementById("txtMarca").onkeydown = function(evt) {
 	var charCode = typeof evt.which == "number" ? evt.which : evt.keyCode;
 	if (charCode == 13) {
 
-		var strCedula = document.getElementById("txt1").value;		
+		var strCedula = document.getElementById("txtMarca").value;		
 
 		$.getJSON("sql/selectEstudianteGestor.php", { cedula: strCedula })
 		.done(function(data) {	    		
@@ -174,7 +182,7 @@ document.getElementById("txt1").onkeydown = function(evt) {
 		}													
 		}).fail(function(jqXHR, textStatus, error) {
 			document.getElementById("divNombre").innerHTML = "No se encontró el estudiante";
-			document.getElementById('txt1').value = '';
+			document.getElementById('txtMarca').value = '';
 			console.log("Error de la aplicación: " + error);    			
 			$(body).append("Error al conectar con la base de datos: " + error);			
 		});
@@ -186,7 +194,7 @@ function transformTypedChar(charStr) {
 	return charStr == "'" ? "-" : charStr;
 };
 
-document.getElementById("txt1").onkeypress = function(evt) {
+document.getElementById("txtMarca").onkeypress = function(evt) {
     var val = this.value;
     evt = evt || window.event;
 
@@ -235,14 +243,15 @@ window.onload = function() {
 	
 	intSeleccion=<?php echo $getTipoMarca; ?>;
 	totalRegistros(intSeleccion);
-    document.getElementById("txt1").focus();
+    document.getElementById("txtMarca").focus();
     return false;
 };
 
 
-$('.salir').html('<img src="img/salir.png">');
+$('#salir').html('<img src="img/salir.png">');
 
 </script>
 
 </body>
-</html>
+</htm>
+
