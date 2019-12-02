@@ -18,9 +18,35 @@ require_once("sql/select.php");
 $getTipoMarca = $_GET['tipo'];
 // 1: Almuerzo
 $intMenuId = 1;
+//Variable que indica guardar aunque no tenga solicitud
+$sinSolicitud=0;
 
 $db = new Select();
 $rs = $db->conMenuDescripcion($intMenuId);
+
+$estudiante_Nombre="";
+$estudiante_PrimerApellido="";
+$estudiante_SegundoApellido="";
+$estudiante_Descripcion="";
+$estudiante_Cedula="";
+
+if (isset($_GET['estudiante'])) { 
+    $estudiante_Id = $_GET['estudiante'];   
+    $rsEstudiante = $db->conEstudiante($estudiante_Id);    
+    if (!empty($rsEstudiante)) {            
+        foreach ($rsEstudiante as $key => $value) {
+            $estudiante_Nombre = $value['estudiante_Nombre'];
+            $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
+			$estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
+			$estudiante_Cedula = $value['estudiante_Cedula'];
+        }
+        $estudiante_Descripcion = $estudiante_Nombre . " " . $estudiante_PrimerApellido . " " . $estudiante_SegundoApellido;                      
+    }            
+} 
+//Si esta setiado, proviene de la pantalla busqueda estudiante
+if (isset($_GET['sinSolicitud'])) { 
+ 	$sinSolicitud = 1;
+}
 
 } catch (PDOException $e) {		
 	$rs = null;
@@ -36,14 +62,15 @@ $rs = $db->conMenuDescripcion($intMenuId);
     <meta charset="utf-8">
     <meta name="autor" content="Mauricio Bermúdez Vargas" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="css/css_marca1.css">
+    <link rel="stylesheet" type="text/css" href="css/css_marca.css">
     <title>Marca</title>
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
 <div id="menu">
-	<a id="salir" href="seleccion.php"></a>	
+	<a id="salir" href="seleccion.php"></a>
+	<a id="add" href="busca_Estudiante.php?tipo=<?php echo $getTipoMarca; ?>"></a>	
 </div>
 <div id="mainArea">
     <!-- Contenerdor menu -->
@@ -67,9 +94,9 @@ $rs = $db->conMenuDescripcion($intMenuId);
     <!-- Contenedor de proceso marca -->
     <div id="contenedorMarca">
         <div id="divTitulo"></div>
-        <div id="divNombre"></div>
+        <div id="divNombre"><?php echo $estudiante_Descripcion; ?></div>
         <div id="containerTxt">
-            <input type="text" id="txtMarca" name="marca" maxlength="20">
+            <input type="text" id="txtMarca" name="marca" maxlength="20" value="<?php echo $estudiante_Cedula; ?>">
         </div>
         <div id="contenedorFrase">
             <img id="imagenMarca">
@@ -88,6 +115,7 @@ var intSeleccion=<?php echo $getTipoMarca; ?>;
 var intSolicitud=1; //Constante para ser usada en la verificación de solicitud
 var strSolicitud="Solicitud Almuerzo";
 var strRegistro="Registro Almuerzo"
+var sinSolicitud = <?php echo $sinSolicitud; ?>;
 
 function totalRegistros(intTipo){
 
@@ -177,8 +205,14 @@ document.getElementById("txtMarca").onkeydown = function(evt) {
 			//Registra marca solicitud			
 			registrarMarca(data.Id, intSeleccion);
 		} else if (intSeleccion==2) {
-			//Verifa que se haya hecho la solicitud antes de guardar registro almuerzo			
-			verificaSolicitud(data.Id, intSolicitud);
+			if (sinSolicitud==0) {
+				//Verifa que se haya hecho la solicitud antes de guardar registro almuerzo			
+				verificaSolicitud(data.Id, intSolicitud);				
+			} else {
+				//Si viene de la pantalla busquesa estudiante
+				registrarMarca(data.Id, intSeleccion);
+				sinSolicitud = 0;
+			}
 		}													
 		}).fail(function(jqXHR, textStatus, error) {
 			document.getElementById("divNombre").innerHTML = "No se encontró el estudiante";
@@ -249,7 +283,7 @@ window.onload = function() {
 
 
 $('#salir').html('<img src="img/salir.png">');
-
+$('#add').html('<img src="img/add.png">');
 </script>
 
 </body>

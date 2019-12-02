@@ -1,0 +1,165 @@
+$margenPCTablaItemCol : 0.50%;
+$paddinPCTablaItemCol : 0.50%;
+$margenMovilTablaItem : 0.50%;
+$paddinMovilTablaItem : 0.50%;
+$fontMovil: 1em;
+$fontPC: 1em;
+//contenedor_Fila
+$margenTablaMovil : 0.20%;
+$paddinTablaMovil : 0.20%;
+$margenTablaPC : 0.10%;
+$paddinTablaPC : 0.10%;
+
+@viewport {
+    width: device-width;
+}
+    
+html {
+overflow-y: auto;
+}
+
+img
+{
+    max-width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    background-color: #303030;   
+}
+
+#menu {
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 1vw;     
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+#menu * {
+    width: 3em;
+    height: 3em;    
+	background: white;
+	border-radius: 50%;	
+}
+
+#mainArea {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column wrap;
+          
+}
+
+#contenedor_Fila {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;   
+}
+
+#contenedor_Fila * {
+    margin: 0.5vw;
+    padding: 0.5vw;
+  }
+
+#txtBuscar {
+    flex: 1;        
+    background-color: transparent;
+    color: white;   
+    font-family: "Lucida Console", Monaco, monospace;   
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 2vw;
+}
+
+#btnbuscar {        
+    display: flex;
+    flex-flow: row wrap;    
+    margin: 1vw;
+    padding: 1vw;
+}
+
+#btnbuscar * {
+    width: 2em;
+    height: 2em;    
+	background: white;
+	border-radius: 50%;	
+}
+
+.cell {
+    flex: 1 0 90%;  
+    color: white;
+    background-color: black; 
+    text-decoration: none;
+    font-size: 1em;
+    padding: 2vw;
+    border-radius: 2px;
+    border-style:solid;
+    border-width: 0.5px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+#statusBar {       
+    // flex-grow: 1;
+    display: flex;      
+    background-color: #499bea;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: $margenMovilTablaItem;
+    padding: $paddinMovilTablaItem;
+    font-family: "Lucida Console", Monaco, monospace;	
+    font-size: $fontMovil; 
+}
+
+input[type=checkbox] {
+	transform: scale(1.5);
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+@media all and (min-width: 500px) {
+
+    #menu{
+        margin: 0.5vw;     
+        padding: 0.5vw;
+    }
+
+    #contenedor_Fila {          
+        margin: $margenTablaPC ;
+        padding: $paddinTablaPC;   
+    }
+
+    #btnbuscar * {
+        width: 4em;
+        height: 4em;           
+    }
+
+    #statusBar {          
+        margin: $margenPCTablaItemCol;
+        padding: $paddinPCTablaItemCol;
+        font-size: $fontPC;
+    }
+}

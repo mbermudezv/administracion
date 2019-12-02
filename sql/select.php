@@ -325,4 +325,49 @@ function conReporteAlmuerzo ($fecha, $intTipo) {
 
 	}
 
+	function conEstudianteBusqueda($alias){
+	
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		
+		if ($pdo != null) {
+			$consultaSQL = "SELECT * FROM Estudiante WHERE  
+							Estudiante_Nombre like '%$alias%' 
+							OR Estudiante_Apellido1 like '%$alias%' OR 
+							Estudiante_Apellido2 like '%$alias%'
+							ORDER BY Estudiante_Nombre DESC";
+			$sql = $pdo->query($consultaSQL);	
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'estudiante_Id' => $row['Estudiante_Id'],	                
+						'estudiante_Nombre' => $row['Estudiante_Nombre'],
+						'estudiante_PrimerApellido' => $row['Estudiante_Apellido1'],
+						'estudiante_SegundoApellido' => $row['Estudiante_Apellido2']	
+					];
+			}	
+			return $rs;
+		}
+	}
+
+	function conEstudiante($id){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		if ($pdo != null) {		
+			$sql = $pdo->query('SELECT * FROM Estudiante WHERE Estudiante_Id ='.$id.' ');			
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'estudiante_Id' => $row['Estudiante_Id'],
+						'estudiante_Nombre' => $row['Estudiante_Nombre'],	                
+						'estudiante_PrimerApellido' => $row['Estudiante_Apellido1'],						
+						'estudiante_SegundoApellido' => $row['Estudiante_Apellido2'],
+						'estudiante_Cedula' => $row['Estudiante_Cedula']												
+					];				
+			}
+			return $rs;
+		}	
+		$pdo = null;	    
+	}
+
+
 }

@@ -46,9 +46,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin: 1vw;
+  padding: 1vw;
   border-radius: 5px;
-  margin: 5px;
-  padding: 5px;
 }
 
 #menu * {
@@ -65,25 +65,13 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-#contenedorMenu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 
-#menuEncabezado {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-#MenuCartaContenedor {
+#contenedor_Fila {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,102 +79,62 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0.2%;
+  padding: 0.2%;
 }
 
-#txtMenu {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-size: 3em;
-  font-family: CabinSketch;
-  color: #ffffff;
-  border-top-style: dashed;
-  text-align: center;
+#contenedor_Fila * {
+  margin: 0.5vw;
+  padding: 0.5vw;
 }
 
-#menuButtom {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  border-top-style: dotted;
-  color: #ffffff;
-  background: url("../img/bottom.jpg");
-}
-
-#contenedorMarca {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-#divTitulo {
-  font-family: "Lucida Console", Monaco, monospace;
-  font-size: 2em;
-  color: yellow;
-  font-weight: bold;
-  background-color: gray;
-  padding: 1vw;
-  margin: 1vw;
-  text-align: center;
-  border-radius: 5px;
-}
-
-#divNombre {
-  font-family: "Lucida Console", Monaco, monospace;
-  font-size: 2em;
-  background-color: white;
-  padding: 1vw;
-  margin: 1vw;
-  border-radius: 5px;
-  text-align: center;
-}
-
-#containerTxt {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  padding: 10px;
-}
-
-#txtMarca {
+#txtBuscar {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background-color: transparent;
   color: white;
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 2em;
+  font-size: 1em;
   border-radius: 5px;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  padding: 5px;
+  padding: 2vw;
 }
 
-#contenedorFrase {
+#btnbuscar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 1vw;
+  padding: 1vw;
 }
 
-#imagenMarca {
-  max-height: 400px;
-  max-width: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+#btnbuscar * {
+  width: 2em;
+  height: 2em;
+  background: white;
+  border-radius: 50%;
+}
+
+.cell {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 90%;
+          flex: 1 0 90%;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 2vw;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0.5px;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
 #statusBar {
@@ -201,7 +149,50 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin: 0.5%;
+  padding: 0.5%;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 1em;
 }
-/*# sourceMappingURL=css_marca.css.map */
+
+input[type=checkbox] {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+@media all and (min-width: 500px) {
+  #menu {
+    margin: 0.5vw;
+    padding: 0.5vw;
+  }
+  #contenedor_Fila {
+    margin: 0.1%;
+    padding: 0.1%;
+  }
+  #btnbuscar * {
+    width: 4em;
+    height: 4em;
+  }
+  #statusBar {
+    margin: 0.5%;
+    padding: 0.5%;
+    font-size: 1em;
+  }
+}
+/*# sourceMappingURL=css_busca_Estudiante.css.map */
