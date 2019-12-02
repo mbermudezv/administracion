@@ -134,8 +134,8 @@ function totalRegistros(intTipo){
 
 function registrarMarca(intId, intTipo){
 
-	muestraImagen();
-	return false;
+	/* muestraImagen();
+	return false; */
 	
 	$.get("sql/selectMarcaRegistradaGestor.php", { tipoRegistro: intTipo, id: intId })
 	.done(function(data) {
@@ -209,7 +209,7 @@ document.getElementById("txtMarca").onkeydown = function(evt) {
 				//Verifa que se haya hecho la solicitud antes de guardar registro almuerzo			
 				verificaSolicitud(data.Id, intSolicitud);				
 			} else {
-				//Si viene de la pantalla busquesa estudiante
+				//Si viene de la pantalla busqueda estudiante
 				registrarMarca(data.Id, intSeleccion);
 				sinSolicitud = 0;
 			}

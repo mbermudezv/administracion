@@ -76,8 +76,7 @@ $(function() {
 <div class="menu_export">
     <div class="imprimir"></div>
     <a id="hyp_excel" class="excel" href="reporte_exportarAlmuerzo.php?fechaDesde=<?php echo $getfecDesde;?>&t=1"></a>
-    <a id="hyp_excel" class="word" href="reporte_exportarAlmuerzo.php?fechaDesde=<?php echo $getfecDesde;?>&t=2"></a>
-    <a id="hyp_excel" class="pdf" href="reporte_exportarAlmuerzo.php?fechaDesde=<?php echo $getfecDesde;?>&t=3"></a>             
+    <a id="hyp_excel" class="word" href="reporte_exportarAlmuerzo.php?fechaDesde=<?php echo $getfecDesde;?>&t=2"></a>    
 </div>
 <div id="enc1" class="encabezado">
     <div id="log1" class="logo"></div>
@@ -142,8 +141,8 @@ $('.btnbuscar').html('<img src="img/refresh.png">');
 $('.imprimir').html('<img src="img/print.png">');
 $('.excel').html('<img src="img/excel.png">');
 $('.word').html('<img src="img/word.png">');
-$('.pdf').html('<img src="img/pdf.png">');
 $('.logo').html('<img src="img/escudo.png">');
+
 </script> 
 </body>
 </html>

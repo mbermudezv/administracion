@@ -181,7 +181,7 @@ body {
 
 #imagenMarca {
   max-height: 400px;
-  max-width: 300px;
+  max-width: 220px;
   -o-object-fit: cover;
      object-fit: cover;
   -ms-flex-item-align: center;
