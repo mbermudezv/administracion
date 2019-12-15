@@ -292,7 +292,7 @@ function conMontoCuenta ($idCuenta)
 			
 	}
 
-function conReporteAlmuerzo ($fecha, $intTipo) {
+function conReporteAlmuerzo ($fecha, $intTipo1, $intTipo2) {
 		
 		date_default_timezone_set('America/Costa_Rica');
 	 	$fechaDesde = date_create($fecha)->format('Y-m-d');
@@ -301,10 +301,13 @@ function conReporteAlmuerzo ($fecha, $intTipo) {
 
   		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);									
 		if ($pdo != null)						
-			$consultaSQL = "SELECT Estudiante_Nombre, Estudiante_Apellido1, Estudiante_Apellido2, Estudiante_Seccion 
+			$consultaSQL = "SELECT Estudiante_Nombre, Estudiante_Apellido1, 
+								Estudiante_Apellido2, Estudiante_Seccion 
 							FROM Estudiante INNER JOIN Marca
 							ON Estudiante.Estudiante_Id = Marca.Estudiante_Id 
-							WHERE Marca_Tipo = ".$intTipo." AND Marca.Marca_Fecha = '".$fechaDesde."' ORDER BY Estudiante_Seccion, Estudiante_Apellido1,
+							WHERE (Marca_Tipo = ".$intTipo1." OR Marca_Tipo = ".$intTipo2.") 
+								AND Marca.Marca_Fecha = '".$fechaDesde."' 
+								ORDER BY Estudiante_Seccion, Estudiante_Apellido1,
 								Estudiante_Apellido2,Estudiante_Nombre";
 			$sql = $pdo->query($consultaSQL);
 			$rs = [];

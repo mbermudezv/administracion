@@ -69,7 +69,7 @@ body {
 .contDate{
    display: flex;
     flex-flow: row wrap;
-    //justify-content: center;    
+    //justify-content: center;      
 }
 
 .contDate * {
@@ -77,6 +77,25 @@ body {
   padding: 1vw;
 }
 
+#itemOption {  
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin: 1vw;
+  padding: 1vw;
+  font-size: 1.2em;
+  color: #FFFFFF;
+
+}
+
+#itemOption * {
+  margin: 0.5vw;
+  padding: 0.5vw;
+}
+
+input[type=radio] {
+	transform: scale(1.5);
+}
 
 .itemDate
 {

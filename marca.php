@@ -111,6 +111,7 @@ if (isset($_GET['sinSolicitud'])) {
 <script language='javascript'>
 // 1: Solicitud Almuerzo
 // 2: Registro Almuerzo
+// 3: Registro Almuerzo sin Solicitud
 var intSeleccion=<?php echo $getTipoMarca; ?>;
 var intSolicitud=1; //Constante para ser usada en la verificación de solicitud
 var strSolicitud="Solicitud Almuerzo";
@@ -210,8 +211,10 @@ document.getElementById("txtMarca").onkeydown = function(evt) {
 				verificaSolicitud(data.Id, intSolicitud);				
 			} else {
 				//Si viene de la pantalla busqueda estudiante
+				intSeleccion = 3; // 3: Registro Almuerzo sin Solicitud
 				registrarMarca(data.Id, intSeleccion);
-				sinSolicitud = 0;
+				sinSolicitud = 0; //Reinicia la variable 
+				intSeleccion = 2; //Deja la variable como estaba
 			}
 		}													
 		}).fail(function(jqXHR, textStatus, error) {

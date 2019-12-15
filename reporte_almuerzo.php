@@ -11,11 +11,12 @@ ini_set('html_errors', true);
 require_once("sql/select.php");
 
 try {
-$getfecDesde=null;
+
 if (isset($_GET['fechaDesde'])) {
     $getfecDesde = $_GET['fechaDesde'];
+    $getmarcaTipo = $_GET['marcaTipo'];
     $db = new Select();
-    $rs = $db->conReporteAlmuerzo($getfecDesde,2); // 2: Registro Almuerzo
+    $rs = $db->conReporteAlmuerzo($getfecDesde,2,3); // 2: Registro Almuerzo y 3: Registro Almuerzo sin Solicitud
 }	
 } catch (PDOException $e) {
 echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
@@ -66,11 +67,16 @@ $(function() {
 </div>
 
 <form action="" id="formulario" method="get">
-    <div id="cont1" class="contDate">
+    <div id="itemOption">
+            <input type="radio" id="rad1" name="tipo" value="1"> Registro de Almuerzos
+            <input type="radio" id="rad2" name="tipo" value="2"> Registro de Solicitudes
+            <input type="radio" id="rad3" name="tipo" value="3"> Registro de Almuerzos sin Solicitudes
+    </div> 
+    <div id="cont1" class="contDate">       
         <div id="cont2" class="itemDate">
             <input  id="inp1" type="text" name="fechaDesde" maxlength="10" autocomplete="off" class="datepicker" placeholder="  Fecha inicio..." readonly="readonly">
         </div> 
-        <div id="btn1" class="btnbuscar" onclick="document.getElementById('formulario').submit();"></div>
+        <div id="btn1" class="bt    nbuscar" onclick="document.getElementById('formulario').submit();"></div>
     </div>
 </form>
 <div class="menu_export">
