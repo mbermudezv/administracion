@@ -68,15 +68,15 @@ $(function() {
 
 <form action="" id="formulario" method="get">
     <div id="itemOption">
-            <input type="radio" id="rad1" name="tipo" value="1"> Registro de Almuerzos
-            <input type="radio" id="rad2" name="tipo" value="2"> Registro de Solicitudes
-            <input type="radio" id="rad3" name="tipo" value="3"> Registro de Almuerzos sin Solicitudes
+            <div><input type="radio" id="rad1" name="tipo" value="1"> Registro de Almuerzos</div>
+            <div><input type="radio" id="rad2" name="tipo" value="2"> Registro de Solicitudes </div>
+            <div><input type="radio" id="rad3" name="tipo" value="3"> Registro de Almuerzos sin Solicitudes </div>
     </div> 
     <div id="cont1" class="contDate">       
         <div id="cont2" class="itemDate">
             <input  id="inp1" type="text" name="fechaDesde" maxlength="10" autocomplete="off" class="datepicker" placeholder="  Fecha inicio..." readonly="readonly">
         </div> 
-        <div id="btn1" class="bt    nbuscar" onclick="document.getElementById('formulario').submit();"></div>
+        <div id="btn1" class="btnbuscar" onclick="document.getElementById('formulario').submit();"></div>
     </div>
 </form>
 <div class="menu_export">

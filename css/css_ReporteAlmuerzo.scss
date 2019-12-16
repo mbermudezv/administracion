@@ -50,7 +50,7 @@ body {
   background-color: transparent;
   display: flex;
   flex-flow: row wrap;  
-  //justify-content: center;
+  justify-content: center;
   border-radius: 10px; 
 }
 
@@ -79,10 +79,9 @@ body {
 
 #itemOption {  
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  margin: 1vw;
-  padding: 1vw;
+  flex-flow: row wrap;  
+  margin: 0.5vw;
+  padding: 0.5vw;
   font-size: 1.2em;
   color: #FFFFFF;
 
@@ -103,6 +102,7 @@ flex: 0 0 50%;
 display: flex;
 flex-flow: row wrap;
 justify-content: flex-end;
+
 }
 
 .itemDate * {
@@ -124,7 +124,7 @@ justify-content: flex-end;
 }
 
 .ui-datepicker {
-    padding: .2em .2em 0;
+    padding: .1em .1em 0;
     display: none;   
     background: #499bea;  
 }

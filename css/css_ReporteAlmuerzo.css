@@ -88,6 +88,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-radius: 10px;
 }
 
@@ -130,13 +133,10 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 1vw;
-  padding: 1vw;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 0.5vw;
+  padding: 0.5vw;
   font-size: 1.2em;
   color: #FFFFFF;
 }
@@ -194,7 +194,7 @@ input[type=radio] {
 }
 
 .ui-datepicker {
-  padding: .2em .2em 0;
+  padding: .1em .1em 0;
   display: none;
   background: #499bea;
 }
