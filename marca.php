@@ -75,7 +75,9 @@ if (isset($_GET['sinSolicitud'])) {
 <div id="mainArea">
     <!-- Contenerdor menu -->
     <div id="contenedorMenu">
-        <img id="menuEncabezado" src="img/menu_top.jpg"></img>	
+		<div id = "ContenedorEncabezadoImg">
+			<img id="menuEncabezado" src="img/menu_top.jpg"></img>
+		</div>	
         <?php
             if(!empty($rs)) {
                 foreach($rs as $rsMenu) {
@@ -87,8 +89,10 @@ if (isset($_GET['sinSolicitud'])) {
             }
             $rs = null;
             }
-        ?>
-        <img id="menuButtom" src="img/bottom.jpg"></img>
+		?>
+		<div id = "ContenedorEncabezadoImg">
+			<img id="menuButtom" src="img/bottom.jpg"></img>
+		</div>
     </div>
 
     <!-- Contenedor de proceso marca -->

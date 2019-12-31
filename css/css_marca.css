@@ -77,6 +77,12 @@ body {
           flex-direction: column;
 }
 
+#ContenedorEncabezadoImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 #menuEncabezado {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -125,12 +131,12 @@ body {
 
 #divTitulo {
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 2em;
+  font-size: 1.5em;
   color: yellow;
   font-weight: bold;
   background-color: gray;
-  padding: 1vw;
-  margin: 1vw;
+  padding: 5px;
+  margin: 5px;
   text-align: center;
   border-radius: 5px;
 }
@@ -139,8 +145,8 @@ body {
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 2em;
   background-color: white;
-  padding: 1vw;
-  margin: 1vw;
+  padding: 5px;
+  margin: 5px;
   border-radius: 5px;
   text-align: center;
 }
@@ -163,7 +169,7 @@ body {
   background-color: transparent;
   color: white;
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 2em;
+  font-size: 3em;
   border-radius: 5px;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -181,7 +187,7 @@ body {
 
 #imagenMarca {
   max-height: 400px;
-  max-width: 220px;
+  max-width: 320px;
   -o-object-fit: cover;
      object-fit: cover;
   -ms-flex-item-align: center;

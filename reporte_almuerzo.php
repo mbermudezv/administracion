@@ -12,11 +12,19 @@ require_once("sql/select.php");
 
 try {
 
+$getmarcaTipo = 0;
+
 if (isset($_GET['fechaDesde'])) {
     $getfecDesde = $_GET['fechaDesde'];
-    $getmarcaTipo = $_GET['marcaTipo'];
+    $getmarcaTipo = $_GET['tipo'];    
     $db = new Select();
-    $rs = $db->conReporteAlmuerzo($getfecDesde,2,3); // 2: Registro Almuerzo y 3: Registro Almuerzo sin Solicitud
+    if ($getmarcaTipo == 2) {
+        $rs = $db->conReporteAlmuerzo($getfecDesde,2,3); // 2: Registro Almuerzo y 3: Registro Almuerzo sin Solicitud
+    } else {
+        // 1: Solicitud Almuerzo y 3: Registro Almuerzo sin Solicitud
+        $rs = $db->conReporteSolicitudySin($getfecDesde,$getmarcaTipo);
+    }
+    
 }	
 } catch (PDOException $e) {
 echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
@@ -34,6 +42,9 @@ exit;
 <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="jq/jquery-ui.js"></script>
 <script>
+ 
+ var tipo = <?php echo $getmarcaTipo; ?>;
+
 $.datepicker.regional['es'] = {
     closeText: 'Cerrar',
     prevText: '< Anterior',
@@ -51,6 +62,7 @@ $.datepicker.regional['es'] = {
     showMonthAfterYear: false,
     yearSuffix: ''
  };
+
  $.datepicker.setDefaults($.datepicker.regional['es']);
 
 $(function() {
@@ -68,8 +80,11 @@ $(function() {
 
 <form action="" id="formulario" method="get">
     <div id="itemOption">
-            <div><input type="radio" id="rad1" name="tipo" value="1"> Registro de Almuerzos</div>
-            <div><input type="radio" id="rad2" name="tipo" value="2"> Registro de Solicitudes </div>
+            <!-- 1: Solicitud Almuerzo -->
+            <!-- 2: Registro Almuerzo -->
+            <!-- 3: Registro Almuerzo sin Solicitud -->
+            <div><input type="radio" id="rad1" name="tipo" value="2"> Registro de Almuerzos</div>
+            <div><input type="radio" id="rad2" name="tipo" value="1"> Registro de Solicitudes </div>
             <div><input type="radio" id="rad3" name="tipo" value="3"> Registro de Almuerzos sin Solicitudes </div>
     </div> 
     <div id="cont1" class="contDate">       
@@ -86,7 +101,7 @@ $(function() {
 </div>
 <div id="enc1" class="encabezado">
     <div id="log1" class="logo"></div>
-    <div id="tit1" class="titulo">Informe almuerzos</div>
+    <div id="tit1" class="titulo"></div>
 </div>
 
 <div id="enc1" class="tabla_encabezado_rango">
@@ -129,7 +144,21 @@ $db = null;
     <div id="tab4Item3" class="item_nombre_firma">Comité Nutrición</div>
 </div>
  <script>
+
+ if (tipo==2) {
+    document.getElementById('tit1').innerHTML = "Registro de Almuerzos";
+}
+
+if (tipo==1) {
+    document.getElementById('tit1').innerHTML = "Registro de Solicitudes";
+} 
+
+if (tipo==3) {
+    document.getElementById('tit1').innerHTML = "Registro de Almuerzos sin Solicitudes";
+}
+
 $(document).ready(function() {
+
     $('.menu_export').on('click', ".imprimir", function () {
         $('.menu').hide();
         $('.containerNombre').hide();
@@ -141,7 +170,21 @@ $(document).ready(function() {
         $('.contDate').show();
         $('.menu_export').show();        
     });
+    
+    $('#rad1').click(function () {
+           document.getElementById('tit1').innerHTML = "Registro de Almuerzos";
+    });
+
+    $('#rad2').click(function () {
+           document.getElementById('tit1').innerHTML = "Registro de Solicitudes";
+    });
+
+    $('#rad3').click(function () {
+           document.getElementById('tit1').innerHTML = "Registro de Almuerzos sin Solicitudes";
+    });
+
 });
+
 $('.salir').html('<img src="img/salir.png">');
 $('.btnbuscar').html('<img src="img/refresh.png">');
 $('.imprimir').html('<img src="img/print.png">');

@@ -1,0 +1,197 @@
+@viewport {
+    width: device-width;
+}
+    
+html {
+overflow-y: auto;
+}
+
+img,
+audio,
+video,
+canvas {
+    max-width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    background-color: #303030;    
+}
+
+#menu {
+    background-color: #499bea;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#menu * {
+    width: 2em;
+    height: 2em;    
+	background: white;
+	border-radius: 50%;
+}
+
+#mainArea {
+    flex-grow: 1;
+    display: flex;    
+    flex-flow: column;
+}
+
+#tabla{    
+    display: flex;
+    flex-direction: column;
+   
+}
+#fila{   
+    display: flex;
+    justify-content: center;    
+	padding-top: 0.25em;
+}
+
+#Col1{    
+    flex: 1;
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+    color: white;
+    
+}
+
+#Col2{       
+    flex: 2;
+    display: flex; 
+    background-color: transparent;
+    justify-content: flex-end;
+    
+}
+
+#Coladd{           
+    display: flex;
+    align-items: center;
+    background-color: transparent;    
+}
+
+
+.txtDescripcion {
+	flex-grow: 1;
+	background-color: transparent;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;    
+}
+
+.txtMonto {	
+	background-color: transparent;
+	color: white;	
+    font-family: "Lucida Console", Monaco, monospace;    
+}
+
+label {      
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;  
+   }
+
+#guardar{    
+	background: #499bea;    
+	border-radius: 5px;
+    border-style: groove;
+    text-align: center;
+    flex-basis: 50%;
+}
+
+#statusBar {       
+    display: flex;     
+    justify-content: space-between;
+    background-color: #499bea;
+}
+
+#add {
+    width: 2em;
+    height: 2em;    
+}
+
+#modificar {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: white;   
+}
+
+input[type=checkbox] {
+	transform: scale(1.5);
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+@media all and (min-width: 500px) {
+
+    #Col1{
+        font-size: 1.2em;
+    }
+
+    .txtDescripcion {
+        font-size: 1.2em;
+    }
+
+    .txtMonto{
+        font-size: 1.2em;
+    }
+
+    #statusBar {
+        font-size: 1.2em;
+    }
+
+    #menu * {
+        width: 3em;
+        height: 3em;           
+    }
+   
+    #fila{
+        margin: 0.25em;
+	    padding: 0.25em;
+    }
+
+    label {    
+        margin: 0.25em;
+        padding: 0.25em;      
+    }
+
+    #guardar{        	
+        flex-basis: 25%;
+        margin: 0.20em;
+	    padding: 0.20em;
+    }
+       
+    #Coladd{                   
+        margin-left: 1vh;  
+    }
+
+    #linkHogar{
+        margin-left: 1vh;
+    }
+
+    #linkWappcom{
+        margin-right: 1vh;
+    }
+
+} 

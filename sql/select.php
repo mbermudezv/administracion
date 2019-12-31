@@ -228,6 +228,42 @@ function conMontoCuenta ($idCuenta)
 		}
 	}
 
+	function conEstudiante ($estudiante_Id)	{
+
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);
+		$nombre= "";
+		$apellido1 = "";
+		$apellido2 = "";
+		$seccion = "";
+		$cedula = "";
+
+		try {
+		if ($pdo != null)
+			$consultaSQL = "SELECT * FROM Estudiante WHERE Estudiante_Id = ".$estudiante_Id."";			
+			$sql = $pdo->query($consultaSQL);
+		 	$rs = [];		 	
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+				$nombre = $row['Estudiante_Nombre'];
+				$apellido1 = $row['Estudiante_Apellido1'];
+				$apellido2 = $row['Estudiante_Apellido2'];
+				$seccion = $row['Estudiante_Seccion'];
+				$cedula = $row['Estudiante_Cedula'];
+
+				$rs[] = [		            	
+					'Estudiante_Nombre' => explode('|', wordwrap(utf8_decode($nombre), 28, '|')),
+					'Estudiante_Apellido1' => explode('|', wordwrap(utf8_decode($apellido1), 28, '|')),
+					'Estudiante_Apellido2' => explode('|', wordwrap(utf8_decode($apellido2), 28, '|')),
+					'Estudiante_Seccion' => $seccion,
+					'Estudiante_Cedula' => $cedula
+				];
+		    }		    
+		    return $rs;			
+		} catch (Exception $e) {
+		echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
+		exit;	  						
+		}
+	}
+
 	function totalRegistros($intTipo){
 
 		date_default_timezone_set('America/Costa_Rica');
@@ -328,6 +364,39 @@ function conReporteAlmuerzo ($fecha, $intTipo1, $intTipo2) {
 
 	}
 
+	function conReporteSolicitudySin ($fecha, $intTipo) {
+		
+		date_default_timezone_set('America/Costa_Rica');
+	 	$fechaDesde = date_create($fecha)->format('Y-m-d');
+		
+  		try {
+
+  		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);									
+		if ($pdo != null)						
+			$consultaSQL = "SELECT Estudiante_Nombre, Estudiante_Apellido1, Estudiante_Apellido2, Estudiante_Seccion 
+							FROM Estudiante INNER JOIN Marca
+							ON Estudiante.Estudiante_Id = Marca.Estudiante_Id 
+							WHERE Marca_Tipo = ".$intTipo." AND Marca.Marca_Fecha = '".$fechaDesde."' 
+							ORDER BY Estudiante_Seccion, Estudiante_Apellido1, Estudiante_Apellido2,Estudiante_Nombre";
+			$sql = $pdo->query($consultaSQL);
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+		            $rs[] = [
+		            	'Estudiante_Nombre' => $row['Estudiante_Nombre'],		            		               
+		                'Estudiante_Apellido1' => $row['Estudiante_Apellido1'],
+						'Estudiante_Apellido2' => $row['Estudiante_Apellido2'],
+						'Estudiante_Seccion' => $row['Estudiante_Seccion']		                	                
+		            ];
+		    }
+		    return $rs;	
+		  			
+  		} catch (Exception $e) {
+			echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
+			exit;	  			
+  		}
+
+	}
+
 	function conEstudianteBusqueda($alias){
 	
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -352,25 +421,25 @@ function conReporteAlmuerzo ($fecha, $intTipo1, $intTipo2) {
 		}
 	}
 
-	function conEstudiante($id){
+	// function conEstudiante($id){
 		
-		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-		if ($pdo != null) {		
-			$sql = $pdo->query('SELECT * FROM Estudiante WHERE Estudiante_Id ='.$id.' ');			
-			$rs = [];
-			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
-					$rs[] = [
-						'estudiante_Id' => $row['Estudiante_Id'],
-						'estudiante_Nombre' => $row['Estudiante_Nombre'],	                
-						'estudiante_PrimerApellido' => $row['Estudiante_Apellido1'],						
-						'estudiante_SegundoApellido' => $row['Estudiante_Apellido2'],
-						'estudiante_Cedula' => $row['Estudiante_Cedula']												
-					];				
-			}
-			return $rs;
-		}	
-		$pdo = null;	    
-	}
+	// 	$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+	// 	if ($pdo != null) {		
+	// 		$sql = $pdo->query('SELECT * FROM Estudiante WHERE Estudiante_Id ='.$id.' ');			
+	// 		$rs = [];
+	// 		while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+	// 				$rs[] = [
+	// 					'estudiante_Id' => $row['Estudiante_Id'],
+	// 					'estudiante_Nombre' => $row['Estudiante_Nombre'],	                
+	// 					'estudiante_PrimerApellido' => $row['Estudiante_Apellido1'],						
+	// 					'estudiante_SegundoApellido' => $row['Estudiante_Apellido2'],
+	// 					'estudiante_Cedula' => $row['Estudiante_Cedula']												
+	// 				];				
+	// 		}
+	// 		return $rs;
+	// 	}	
+	// 	$pdo = null;	    
+	// }
 
 
 }

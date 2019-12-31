@@ -46,11 +46,17 @@ body {
 
 #contenedorMenu{
 	display: flex;
-    flex-direction: column;    
+    flex-direction: column;
+    
+}
+
+#ContenedorEncabezadoImg{
+    display: flex;
 }
 
 #menuEncabezado {
-    flex: 1;	
+    flex: 1;
+    //flex-basis: 80%;	
 }
 
 #MenuCartaContenedor {
@@ -61,7 +67,8 @@ body {
 
 #txtMenu {
     flex: 1;        
-	font-size: 3em;	
+    //flex-basis: 80%;
+    font-size: 3em;	
 	font-family: CabinSketch;
     color: #ffffff;	
     border-top-style: dashed;
@@ -71,6 +78,7 @@ body {
 
 #menuButtom {
     flex: 1;
+    //flex-basis: 80%;
     border-top-style: dotted;
     color: #ffffff;	
 	background: url('../img/bottom.jpg');
@@ -78,17 +86,18 @@ body {
 
 #contenedorMarca{
 	display: flex;
-	flex-direction: column;	
+    flex-direction: column;
+    	
 }
 
 #divTitulo{
 	font-family: "Lucida Console", Monaco, monospace;	
-	font-size: 2em;
+	font-size: 1.5em;
 	color: yellow;
 	font-weight: bold;
 	background-color: gray;
-	padding: 1vw;
-	margin: 1vw;
+	padding: 5px;
+	margin: 5px;
 	text-align: center;
 	border-radius: 5px;
 }
@@ -97,8 +106,8 @@ body {
 	font-family: "Lucida Console", Monaco, monospace;	
 	font-size: 2em;	
 	background-color: white;
-	padding: 1vw;
-	margin: 1vw;
+	padding: 5px;
+	margin: 5px;
     border-radius: 5px;
     text-align: center;
 }
@@ -114,7 +123,7 @@ body {
 	background-color: transparent;
 	color: white;	
 	font-family: "Lucida Console", Monaco, monospace;	
-	font-size: 2em;
+	font-size: 3em;
     border-radius: 5px;
     margin-left: 1vw;
     margin-right: 1vw;
@@ -129,7 +138,7 @@ body {
 
 #imagenMarca {
     max-height: 400px;
-    max-width: 220px;
+    max-width: 320px;
     object-fit: cover;
     align-self: center;
 }
