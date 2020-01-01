@@ -29,13 +29,17 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    border-radius: 5px;
 }
 
 #menu * {
-    width: 2em;
-    height: 2em;    
+    width: 3em;
+    height: 3em;    
 	background: white;
-	border-radius: 50%;
+    border-radius: 50%;
+    
 }
 
 #mainArea {
@@ -47,12 +51,15 @@ body {
 #tabla{    
     display: flex;
     flex-direction: column;
+    // margin: 1vw;
+    // padding: 1vw;
    
 }
 #fila{   
     display: flex;
     justify-content: center;    
-	padding-top: 0.25em;
+    //padding-top: 0.25em;
+    padding-top: 1.2em;
 }
 
 #Col1{    
@@ -68,6 +75,7 @@ body {
     display: flex; 
     background-color: transparent;
     justify-content: flex-end;
+    font-size: 1em;
     
 }
 
@@ -82,7 +90,8 @@ body {
 	flex-grow: 1;
 	background-color: transparent;
 	color: white;	
-	font-family: "Lucida Console", Monaco, monospace;    
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 1.2em;
 }
 
 .txtMonto {	
@@ -115,12 +124,10 @@ label {
     width: 2em;
     height: 2em;    
 }
-
-#modificar {
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 50%;
-    background: white;   
+.menuBoton{    
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
 }
 
 input[type=checkbox] {
@@ -143,14 +150,20 @@ a:active {
     text-decoration: underline;
 }
 
-@media all and (min-width: 500px) {
+@media all and (min-width: 500px) {    
+
+    #tabla{            
+        margin: 1.2vw;
+        padding: 1.2vw;
+       
+    }
 
     #Col1{
         font-size: 1.2em;
     }
 
     .txtDescripcion {
-        font-size: 1.2em;
+        font-size: 2em;
     }
 
     .txtMonto{

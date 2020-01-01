@@ -28,10 +28,10 @@ class insertEstudiante
 		$stmt = $this->pdo->prepare($sql);				
         			
         $stmt->execute([            
-            ':estudiante_Cedula' => $trabajador_Cedula,
-            ':estudiante_Nombre' => $trabajador_Nombre,
-            ':estudiante_PrimerApellido' => $trabajador_PrimerApellido,
-            ':estudiante_SegundoApellido' => $trabajador_SegundoApellido,
+            ':estudiante_Cedula' => $estudiante_Cedula,
+            ':estudiante_Nombre' => $estudiante_Nombre,
+            ':estudiante_PrimerApellido' => $estudiante_PrimerApellido,
+            ':estudiante_SegundoApellido' => $estudiante_SegundoApellido,
             ':estudiante_Seccion' => $estudiante_Seccion           
                   
             ]);				

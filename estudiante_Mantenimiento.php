@@ -21,13 +21,14 @@ try {
         $estudiante_Id = $_GET['estudiante'];
         $db = new Select();
         $rsEstudiante = $db->conEstudiante($estudiante_Id);        
-        if (!empty($rsEstudiante)) {                                       
+        if (!empty($rsEstudiante)) {                                                             
             foreach ($rsEstudiante as $key => $value) {                
-                $estudiante_Cedula = $value['Estudiante_Cedula'];
-                $estudiante_Nombre = $value['Estudiante_Nombre'];
-                $estudiante_PrimerApellido = $value['Estudiante_Apellido1'];
-                $estudiante_SegundoApellido = $value['estudiante_Apellido2'];
-                $estudiante_Seccion = $value['Estudiante_Seccion'];                                      
+                $estudiante_Cedula = $value['estudiante_Cedula'];
+                $estudiante_Nombre = $value['estudiante_Nombre'];
+                $estudiante_PrimerApellido = $value['estudiante_PrimerApellido'];
+                $estudiante_SegundoApellido = $value['estudiante_SegundoApellido'];
+                $estudiante_Seccion = $value['estudiante_Seccion'];
+                                                     
             }                                            
         }
                   
@@ -44,7 +45,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="css/css_estudianteMantenimiento.css">
+    <link rel="stylesheet" type="text/css" href="css/css_estudianteMantenimiento.css?<?php echo rand(1000,9999)?>">
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>    
     <title>Estudiante</title>
        
@@ -53,7 +54,8 @@ try {
    
     <div id="mainArea">
         <div id="menu">
-            <a id="salir" href="seleccion.php"></a>
+            <a id="salir" class="menuBoton" href="seleccion.php"></a>
+            <a id="buscar" class="menuBoton" href="busca_EstudianteMantenimiento.php"></a>	
         </div>
         <div id="tabla">
            
@@ -115,21 +117,24 @@ try {
         var estudiante_Seccion = $('#txtSeccion').val();        
 
         if (estudiante_Id==0){
+            
             $('#guardar').html('<img src="img/cargando.gif">');	
             $.post("sql/insertEstudianteGestor.php", {estudiante_Cedula: estudiante_Cedula,
-                estudiante_Nombre: estudiante_Nombre, estudiante_PrimerApellido: estudiante_PrimerApellido, estudiante_SegundoApellido: estudiante_SegundoApellido,
-                estudiante_Seccion: estudiante_Seccion})
+                    estudiante_Nombre: estudiante_Nombre, 
+                    estudiante_PrimerApellido: estudiante_PrimerApellido, 
+                    estudiante_SegundoApellido: estudiante_SegundoApellido,
+                    estudiante_Seccion: estudiante_Seccion})
                 .done(function(data) {                                           							                         
                     $('#guardar').html('<img src="img/guardar.png">');                    
                 }).fail(function(jqXHR, textStatus, error) {
                     console.log("Error de la aplicación: " + error);    			
                     $(body).append("Error al conectar con la base de datos: " + error);			
                 });	                
-            } else	{                
+            } else	{                                
                 $('#guardar').html('<img src="img/cargando.gif">');
-                $.post("sql/updateTrabajadorGestor.php", {trabajador_Id: trabajador_Id, puesto_Id: puesto_Id, trabajador_Cedula: trabajador_Cedula,
-                trabajador_Nombre: trabajador_Nombre, trabajador_PrimerApellido: trabajador_PrimerApellido, trabajador_SegundoApellido: trabajador_SegundoApellido,
-                trabajador_Activo: trabajador_Activo, trabajador_Salario: trabajador_Salario, trabajador_Email: trabajador_Email})
+                $.post("sql/updateEstudianteGestor.php", {estudiante_Id: estudiante_Id, estudiante_Cedula: estudiante_Cedula,
+                estudiante_Nombre: estudiante_Nombre, estudiante_PrimerApellido: estudiante_PrimerApellido, estudiante_SegundoApellido: estudiante_SegundoApellido,
+                estudiante_Seccion: estudiante_Seccion})
                 .done(function(data) {	    		                                                         
                     $('#guardar').html('<img src="img/guardar.png">');	    		
                 }).fail(function(jqXHR, textStatus, error) {
@@ -139,31 +144,10 @@ try {
         }
 
     }
-    
-    $(document).ready(function() {
             
-        $('#txtSalario').inputmask({
-            'alias': 'decimal',
-            rightAlign: true,
-            'groupSeparator': '.',
-            'autoGroup': true
-        });           
-                       
-    });
-        
     $('#salir').html('<img src="img/salir.png">'); 
     $('#guardar').html('<img src="img/guardar.png">');
-    $('#add').html('<img src="img/add.png">');
-    $('#modificar').html('<img src="img/menu.png">');
-
-    $("#cbox1").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
-        if (trabajador_Activo == 0) {
-            trabajador_Activo=1;
-        } else {
-            trabajador_Activo=0;
-        }       
-    });
+    $('#buscar').html('<img src="img/buscar.png">');    
 
 </script>
 </body>
