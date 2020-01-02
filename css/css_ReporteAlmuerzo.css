@@ -47,8 +47,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0.5em;
-  border-radius: 10px;
+  margin: 0.5vw;
+  padding: 0.5vw;
+  border-radius: 5px;
 }
 
 .menu * {
@@ -236,9 +237,12 @@ input[type=radio] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: white;
   border-radius: 10px;
-  margin: 2px;
   font-weight: bold;
 }
 
@@ -274,17 +278,15 @@ input[type=radio] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90%;
-  margin: 2vw;
-  padding: 2vw;
+  margin: 0.5vw;
+  padding: 0.5vw;
   text-decoration: none;
-  border-style: groove;
+  border: 1px solid black;
   color: black;
   text-overflow: ellipsis;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 1em;
   background-color: transparent;
-  border-radius: 10px;
 }
 
 .tabla_encabezado {

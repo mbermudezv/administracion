@@ -406,5 +406,22 @@ function conReporteAlmuerzo ($fecha, $intTipo1, $intTipo2) {
 		$pdo = null;	    
 	}
 
-
+	function conParametros(){
+		
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		if ($pdo != null) {		
+			$sql = $pdo->query('SELECT * FROM parametros');			
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+					$rs[] = [
+						'institucion_Nombre' => $row['institucion_Nombre'],
+						'director_Institucional' => $row['director_Institucional'],	                
+						'coordinador_Comite' => $row['coordinador_Comite'],						
+						'comite_Nutricion' => $row['comite_Nutricion']												
+					];				
+			}
+			return $rs;
+		}	
+		$pdo = null;	    
+	}
 }

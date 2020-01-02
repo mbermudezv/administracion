@@ -12,7 +12,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .menu * {

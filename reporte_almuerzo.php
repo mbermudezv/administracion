@@ -12,17 +12,37 @@ require_once("sql/select.php");
 
 try {
 
-$getmarcaTipo = 0;
+$getmarcaTipo = 0; 
+$institucion_Nombre = "";
+$getfecDesde = "";
+$nombrecompleto = "";
+$director_Institucional = "";
+$coordinador_Comite = "";
+$comite_Nutricion = "";
+
+$db = new Select();
+
+$rsParametros = $db->conParametros();
+if(!empty($rsParametros)) {
+    foreach($rsParametros as $rsItemParametros) {
+        $institucion_Nombre = $rsItemParametros["institucion_Nombre"];
+        $director_Institucional = $rsItemParametros["director_Institucional"];
+        $coordinador_Comite = $rsItemParametros["coordinador_Comite"];
+        $comite_Nutricion = $rsItemParametros["comite_Nutricion"];
+    }
+}
 
 if (isset($_GET['fechaDesde'])) {
     $getfecDesde = $_GET['fechaDesde'];
     $getmarcaTipo = $_GET['tipo'];    
-    $db = new Select();
+    
     if ($getmarcaTipo == 2) {
         $rs = $db->conReporteAlmuerzo($getfecDesde,2,3); // 2: Registro Almuerzo y 3: Registro Almuerzo sin Solicitud
     } else {
         // 1: Solicitud Almuerzo y 3: Registro Almuerzo sin Solicitud
-        $rs = $db->conReporteSolicitudySin($getfecDesde,$getmarcaTipo);
+        if ($getmarcaTipo>0) {
+            $rs = $db->conReporteSolicitudySin($getfecDesde,$getmarcaTipo);
+        }   
     }
     
 }	
@@ -75,7 +95,8 @@ $(function() {
 <body>
 
 <div class="menu">
-<a id="menu1" class="salir" href="seleccion.php"></a>    
+    <a id="menu1" class="salir" href="seleccion.php"></a>
+    <a id="menu2" href="parametros.php"></a>
 </div>
 
 <form action="" id="formulario" method="get">
@@ -100,7 +121,8 @@ $(function() {
     <a id="hyp_excel" class="word" href="reporte_exportarAlmuerzo.php?fechaDesde=<?php echo $getfecDesde;?>&t=2"></a>    
 </div>
 <div id="enc1" class="encabezado">
-    <div id="log1" class="logo"></div>
+    <!-- <div id="log1" class="logo"></div> -->
+    <div id="tit2" class="titulo"><?php echo $institucion_Nombre; ?></div>
     <div id="tit1" class="titulo"></div>
 </div>
 
@@ -134,9 +156,9 @@ $db = null;
     <div id="tab3Item3" class="linea_firma">------------------------------</div>
 </div>
 <div id="tab4" class="contenedor_nombre_firma">
-    <div id="tab4Item1" class="item_nombre_firma">MSc. Magaly Camacho Aguero</div>
-    <div id="tab4Item2" class="item_nombre_firma">MSc. Raquel Vindas Quirós</div>
-    <div id="tab4Item3" class="item_nombre_firma">Anaís Monge Montoya</div>
+    <div id="tab4Item1" class="item_nombre_firma"><?php echo $director_Institucional; ?></div>
+    <div id="tab4Item2" class="item_nombre_firma"><?php echo $coordinador_Comite; ?></div>
+    <div id="tab4Item3" class="item_nombre_firma"><?php echo $comite_Nutricion; ?></div>
 </div>
 <div id="tab4" class="contenedor_nombre_firma">
     <div id="tab4Item1" class="item_nombre_firma">Directora institucional</div>
@@ -191,6 +213,7 @@ $('.imprimir').html('<img src="img/print.png">');
 $('.excel').html('<img src="img/excel.png">');
 $('.word').html('<img src="img/word.png">');
 $('.logo').html('<img src="img/escudo.png">');
+$('#menu2').html('<img src="img/edit.png">');
 
 </script> 
 </body>

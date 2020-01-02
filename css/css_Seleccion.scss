@@ -6,8 +6,10 @@ body {
 .menu{
     background-color: #499bea;
     display: flex;
-    flex-flow: row wrap;    
-    border-radius: 10px;
+    flex-flow: row wrap;
+    //margin: 0.5vw;
+    //padding: 0.5vw;    
+    border-radius: 5px;
 }
 
 .menu * {
