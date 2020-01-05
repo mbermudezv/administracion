@@ -52,33 +52,26 @@ try {
             <div id="fila">
                 <div id="Col1">Institución Nombre:</div>
                 <div id="Col2">
-                    <input type="text" id="txtNombre" class="txtDescripcion" maxlength="50" value="<?php echo $institucion_Nombre;?>">
+                    <input type="text" id="txtNombre" class="txtDescripcion" maxlength="255" value="<?php echo $institucion_Nombre;?>">
                 </div>
             </div>            
              <div id="fila">
-                <div id="Col1">Primer Apellido:</div>
+                <div id="Col1">Director Institucional:</div>
                 <div id="Col2">
-                    <input type="text" id="txtApellido1" class="txtDescripcion" maxlength="50" value="<?php echo $estudiante_PrimerApellido;?>">
+                    <input type="text" id="director_Institucional" class="txtDescripcion" maxlength="255" value="<?php echo $director_Institucional;?>">
                 </div>
             </div>    
             <div id="fila">
-                <div id="Col1">Segundo Apellido:</div>
+                <div id="Col1">Coordinador Comité:</div>
                 <div id="Col2">
-                    <input type="text" id="txtApellido2" class="txtDescripcion" maxlength="50" value="<?php echo $estudiante_SegundoApellido;?>">
+                    <input type="text" id="coordinador_Comite" class="txtDescripcion" maxlength="255" value="<?php echo $coordinador_Comite;?>">
                 </div>
             </div>
             <div id="fila">
-                <div id="Col1">Cédula:</div>
-                <div id="Col2">                    
-                    <input type="text" id="txtCedula" class="txtDescripcion" maxlength="50" value="<?php echo $estudiante_Cedula;?>">                    
+                <div id="Col1">Comite Nutrición:</div>
+                <div id="Col2"> <input type="text" id="comite_Nutricion" class="txtDescripcion" maxlength="255" value="<?php echo $comite_Nutricion;?>">                    
                 </div>
-            </div>     
-            <div id="fila">
-                <div id="Col1">Sección:</div>
-                <div id="Col2">                    
-                    <input type="text" id="txtSeccion" class="txtDescripcion" maxlength="4" value="<?php echo $estudiante_Seccion;?>">                    
-                </div>
-            </div>
+            </div>                
                                         
         </div>
                
@@ -95,36 +88,24 @@ try {
 
 <script>
 
-    var estudiante_Id = <?php echo $estudiante_Id;?>;
+    var parametros_Id = 1; //Solo deberia existir un registro den la tabla parametros
     
     function guardar() {
 
                 
-        var estudiante_Cedula = $('#txtCedula').val();
-        var estudiante_Nombre = $('#txtNombre').val();
-        var estudiante_PrimerApellido = $('#txtApellido1').val();
-        var estudiante_SegundoApellido = $('#txtApellido2').val();
-        var estudiante_Seccion = $('#txtSeccion').val();        
-
-        if (estudiante_Id==0){
-            
-            $('#guardar').html('<img src="img/cargando.gif">');	
-            $.post("sql/insertEstudianteGestor.php", {estudiante_Cedula: estudiante_Cedula,
-                    estudiante_Nombre: estudiante_Nombre, 
-                    estudiante_PrimerApellido: estudiante_PrimerApellido, 
-                    estudiante_SegundoApellido: estudiante_SegundoApellido,
-                    estudiante_Seccion: estudiante_Seccion})
-                .done(function(data) {                                           							                         
-                    $('#guardar').html('<img src="img/guardar.png">');                    
-                }).fail(function(jqXHR, textStatus, error) {
-                    console.log("Error de la aplicación: " + error);    			
-                    $(body).append("Error al conectar con la base de datos: " + error);			
-                });	                
+        var institucion_Nombre = $('#txtNombre').val();
+        var director_Institucional = $('#director_Institucional').val();
+        var coordinador_Comite = $('#coordinador_Comite').val();
+        var comite_Nutricion = $('#comite_Nutricion').val();
+        
+        if (parametros_Id==0){            
+           //No hay insert
             } else	{                                
                 $('#guardar').html('<img src="img/cargando.gif">');
-                $.post("sql/updateEstudianteGestor.php", {estudiante_Id: estudiante_Id, estudiante_Cedula: estudiante_Cedula,
-                estudiante_Nombre: estudiante_Nombre, estudiante_PrimerApellido: estudiante_PrimerApellido, estudiante_SegundoApellido: estudiante_SegundoApellido,
-                estudiante_Seccion: estudiante_Seccion})
+                $.post("sql/updateParametrosGestor.php", {parametros_Id: parametros_Id, 
+                    institucion_Nombre: institucion_Nombre,
+                    director_Institucional: director_Institucional, 
+                    coordinador_Comite: coordinador_Comite, comite_Nutricion: comite_Nutricion})
                 .done(function(data) {	    		                                                         
                     $('#guardar').html('<img src="img/guardar.png">');	    		
                 }).fail(function(jqXHR, textStatus, error) {
@@ -136,8 +117,7 @@ try {
     }
             
     $('#salir').html('<img src="img/salir.png">'); 
-    $('#guardar').html('<img src="img/guardar.png">');
-    $('#buscar').html('<img src="img/buscar.png">');    
+    $('#guardar').html('<img src="img/guardar.png">');        
 
 </script>
 </body>

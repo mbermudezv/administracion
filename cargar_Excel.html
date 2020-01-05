@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="autor" content="Mauricio Bermúdez Vargas" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" type="text/css" href="css/css_estudianteMantenimiento.css">
+<title>Cargar archivo</title>
+<script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+</head> 
+<body>
+    <div id="mainArea">
+        <div id="menu">
+            <a id="salir" class="menuBoton" href="seleccion.php"></a>            
+        </div>
+        <div id="fila">
+            <div id="Col1">Seleccione el archivo Excel:</div>
+            <div id="Col1">
+                <input type="file" id="upexcel"  accept=".csv,.xls,.xlsx" required/>
+            </div>
+        </div> 
+        <div id="tabla">
+            <div id="fila">
+                <div id="guardar" onclick="guardar()"></div>                   
+            </div>
+        </div>        
+    </div>    
+    <div id="statusBar">
+        <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
+        <a id="linkWappcom" href="https://www.wappcom.net">wappcom.net</a>                                         
+    </div>
+
+<script>
+
+function guardar() {
+    
+    var excel = $('#upexcel')[0].files[0];
+
+    var data = new FormData(); 
+    data.append('upexcel', excel);
+
+    $('#guardar').html('<img src="img/cargando.gif">');
+    
+    var xhr=new XMLHttpRequest();
+    xhr.open('POST','sql/insertExcelGestor.php',true);          
+    xhr.onload=function(e) {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                console.log(xhr.response);
+                $('#guardar').html('<img src="img/guardar.png">');                                                 
+            }  
+        }                   
+    };          
+    xhr.send(data);                   
+       
+}
+        
+$('#salir').html('<img src="img/salir.png">'); 
+$('#guardar').html('<img src="img/guardar.png">');    
+</script>
+
+</body>
+</html>
