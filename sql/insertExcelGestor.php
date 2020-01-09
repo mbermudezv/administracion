@@ -17,7 +17,7 @@ if (!isset($_FILES['upexcel']['tmp_name']) || !in_array($_FILES['upexcel']['type
     'application/vnd.msexcel', 
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   ])) {
-    die("Invalid file type");
+    die("error");
   }	
 
   require '../vendor/autoload.php';
@@ -55,7 +55,8 @@ if (!isset($_FILES['upexcel']['tmp_name']) || !in_array($_FILES['upexcel']['type
 catch (Exception $e) {		
 	console.log("Error de la aplicación: " + $e->getMessage());
 	echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
-	$db = null;
+  $db = null;
+  die("error");
 	exit;
 }
 
