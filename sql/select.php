@@ -206,6 +206,7 @@ function conMontoCuenta ($idCuenta)
 		try {
 		if ($pdo != null)
 			$consultaSQL = "SELECT * FROM Estudiante WHERE Estudiante_Cedula = '".$strCedula."'";			
+			$sql = $pdo->query("SET names utf8");
 			$sql = $pdo->query($consultaSQL);
 		 	$rs = [];		 	
 			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
@@ -214,13 +215,23 @@ function conMontoCuenta ($idCuenta)
 				$apellido2 = $row['Estudiante_Apellido2'];
 				$id = $row['Estudiante_Id'];
 
-				$rs[] = [		            	
+ 				/*$rs[] = [		            	
 					'Estudiante_Nombre' => explode('|', wordwrap(utf8_decode($nombre), 28, '|')),
 					'Estudiante_Apellido1' => explode('|', wordwrap(utf8_decode($apellido1), 28, '|')),
 					'Estudiante_Apellido2' => explode('|', wordwrap(utf8_decode($apellido2), 28, '|')),
 					'Estudiante_Id' => $id
+				];*/
+				
+
+				$rs[] = [		            	
+					'Estudiante_Nombre' => $nombre,
+					'Estudiante_Apellido1' => $apellido1,
+					'Estudiante_Apellido2' => $apellido2,
+					'Estudiante_Id' => $id
 				];
-		    }		    
+
+
+ 		    }		    
 		    return $rs;			
 		} catch (Exception $e) {
 		echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
