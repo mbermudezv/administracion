@@ -1,0 +1,232 @@
+@-ms-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+html {
+  overflow-y: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #303030;
+}
+
+#menu {
+  background-color: #499bea;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#menu * {
+  width: 3em;
+  height: 3em;
+  background: white;
+  border-radius: 50%;
+}
+
+#mainArea {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#contenedorMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#ContenedorEncabezadoImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#menuEncabezado {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#MenuCartaContenedor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+#txtMenu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 3em;
+  font-family: CabinSketch;
+  color: #ffffff;
+  border-top-style: dashed;
+  text-align: center;
+}
+
+#menuButtom {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-top-style: dotted;
+  color: #ffffff;
+  background: url("../img/bottom.jpg");
+}
+
+#contenedorMarca {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#divTitulo {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1.5em;
+  color: yellow;
+  font-weight: bold;
+  background-color: gray;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#divNombre {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 2em;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#containerTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+#containerButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+#stopbutton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background: white;
+}
+
+#txtMarca {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: transparent;
+  color: white;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 3em;
+  border-radius: 5px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  padding: 5px;
+}
+
+#contenedorFrase {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#imagenMarca {
+  max-height: 400px;
+  max-width: 320px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#statusBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #499bea;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 1em;
+}
+/*# sourceMappingURL=css_marcam.css.map */

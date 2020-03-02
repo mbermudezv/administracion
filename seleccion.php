@@ -25,7 +25,8 @@ ini_set('html_errors', true);
 	<a id="menuCarta" class="menuCarta" href="menu_Mantenimiento.php?menuId=1"></a>
 	<a id="imprimir" class="imprimir" href="reporte_almuerzo.php"></a>
 	<a id="estudiante" href="estudiante_Mantenimiento.php"></a>
-	<a id="upload" href="cargar_Excel.html"></a>	
+	<a id="upload" href="cargar_Excel.html"></a>
+	<a id="camera" href="marcam.php"></a>	
 </div>
 
 <div class="container">
@@ -45,6 +46,7 @@ $('.menuCarta').html('<img src="img/edit.png">');
 $('.imprimir').html('<img src="img/print.png">');
 $('#estudiante').html('<img src="img/cliente.png">');
 $('#upload').html('<img src="img/upload.png">');
+$('#camera').html('<img src="img/camera.png">');
 
 </script>			
 </body>
