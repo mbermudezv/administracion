@@ -34,13 +34,14 @@ if (!isset($_FILES['upexcel']['tmp_name']) || !in_array($_FILES['upexcel']['type
       $spreadsheet = $reader->load($_FILES['upexcel']['tmp_name']);
       $worksheet = $spreadsheet->getActiveSheet();   
       $highestRow = $worksheet->getHighestRow();
+      
+      /*for ($row = 7; $row <= $highestRow; ++$row) {*/
+      for ($row = 0; $row <= $highestRow; ++$row) {
 
-       for ($row = 7; $row <= $highestRow; ++$row) {    
-
-            $estudiante_Cedula = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-            $estudiante_PrimerApellido = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-            $estudiante_SegundoApellido = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-            $estudiante_Nombre = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+            $estudiante_Cedula = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+            $estudiante_PrimerApellido = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+            $estudiante_SegundoApellido = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+            $estudiante_Nombre = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
             $estudiante_Seccion = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
             $db = new insertExcel();
