@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', false);        
 ini_set('html_errors', true);
 
-try 
+try
 {
 
 } catch (PDOException $e) {		
@@ -22,8 +22,8 @@ try
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="autor" content="Mauricio Bermúdez Vargas" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="autor" content="Mauricio Bermúdez Vargas"/>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="css/css_marcam.css">
     <title>Marca</title>
     <script async src="js/zxing.js"></script>
