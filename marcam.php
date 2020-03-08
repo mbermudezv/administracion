@@ -68,20 +68,21 @@ var streaming = false,
   barcode_result = document.getElementById('dbr'),
   videoSelect = document.querySelector('select#videoSource'),
   width = 240,
-  height = 0,
+  height = 320,
   mobileVideoWidth = 240, 
   mobileVideoHeight = 320;
 
+/*  
 var ZXing = null;
 var decodePtr = null;
 var fotobar = null;
-
+*/
 
 startbutton.addEventListener('click', function(ev){ camaraStart(); ev.preventDefault();}, false);  
-stopbutton.addEventListener('click', function(ev){ fotobar = camaraStop(); barcode(); ev.preventDefault();}, false);
+stopbutton.addEventListener('click', function(ev){ fotobar = camaraStop(); /*barcode();*/ ev.preventDefault();}, false);
 
 //camaraStart();
-
+/*
 function barcode() {
     if (ZXing == null) {
         stopbutton.disabled = false;
@@ -109,6 +110,7 @@ var tick = function () {
 };
 
 tick();
+*/
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
 function gotDevices(deviceInfos) {
