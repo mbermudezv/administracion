@@ -25,34 +25,35 @@ try
     <meta name="autor" content="Mauricio Bermúdez Vargas"/>
     <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" type="text/css" href="css/css_marcam.css">
-    <title>Marca</title>
-    <script async src="js/zxing.js"></script>
-    <script type="text/javascript" src="js/camara.js?<?php echo rand(); ?>"></script>
+    <title>Marca</title>    
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+    <script async src="js/zxing.js"></script>
+    <script type="text/javascript" src="js/camara.js?<?php echo rand(); ?>"></script>    
+
 </head>
 <body>
 <div id="menu">
 	<a id="salir" href="seleccion.php"></a>
 	<a id="add" href="busca_Estudiante.php?tipo=<?php echo $getTipoMarca; ?>"></a>	
 </div>
-<div id="mainArea">
+<!-- <div id="mainArea"> -->
     <!-- Contenedor de proceso marca -->
-    <div id="contenedorMarca">
-    <video id="video" autobuffer></video>
-    <canvas id="canvas" width="240" height="320"></canvas>
-    <img id="photo">
-    <div id="containerTxt">
-        <div>Cédula: <span id="dbr"></span></div>        
-    </div> 
-    <div class="select">
-        <label for="videoSource">Video source: </label><select id="videoSource"></select>
-    </div>    
-    <div id="containerButton">           
-        <button id="startbutton">¡Activa Camara!</button>    
-        <button id="stopbutton"></button>
-    </div>    	    
-    </div>
-</div>
+    <!-- <div id="contenedorMarca"> -->
+      <video id="video" autobuffer></video>
+      <canvas id="canvas" width="240" height="320"></canvas>
+      <img id="photo">
+      <div id="containerTxt">
+          <div>Cédula: <span id="dbr"></span></div>        
+      </div> 
+      <div class="select">
+          <label for="videoSource">Video source: </label><select id="videoSource"></select>
+      </div>    
+      <div id="containerButton">           
+          <button id="startbutton">¡Activa Camara!</button>    
+          <button id="stopbutton"></button>
+      </div>    	    
+    <!-- </div> -->
+<!-- </div> -->
 <div id="statusBar">
     <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
     <a id="linkWappcom"href="https://www.wappcom.net">wappcom.net</a>                                       
@@ -68,31 +69,23 @@ var streaming = false,
   barcode_result = document.getElementById('dbr'),
   videoSelect = document.querySelector('select#videoSource'),
   width = 240,
-  height = 320,
-  mobileVideoWidth = 240, 
-  mobileVideoHeight = 320;
-
-/*  
-var ZXing = null;
-var decodePtr = null;
-var fotobar = null;
-*/
-
-startbutton.addEventListener('click', function(ev){ camaraStart(); ev.preventDefault();}, false);  
-stopbutton.addEventListener('click', function(ev){ fotobar = camaraStop(); /*barcode();*/ ev.preventDefault();}, false);
+  height = 320;
 
 //camaraStart();
-/*
-function barcode() {
-    if (ZXing == null) {
-        stopbutton.disabled = false;
-        alert("Error con lector de barra!");
-        return;
-    }
-    barcode_result.textContent = "";
-                   
-    return 0;
+
+var ZXing = null;
+var decodePtr = null;
+
+var tick = function () {
+if (window.ZXing) {
+  ZXing = ZXing();
+  decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+} else {
+  setTimeout(tick, 10);
 }
+};
+
+tick();
 
 var decodeCallback = function (ptr, len, resultIndex, resultCount) {
   var result = new Uint8Array(ZXing.HEAPU8.buffer, ptr, len);
@@ -100,17 +93,39 @@ var decodeCallback = function (ptr, len, resultIndex, resultCount) {
   barcode_result.textContent = String.fromCharCode.apply(null, result);
 };
 
-var tick = function () {
-  if (window.ZXing) {
-    ZXing = ZXing();
-    decodePtr = ZXing.Runtime.addFunction(decodeCallback);
-  } else {
-    setTimeout(tick, 10);
-  }
-};
+function scanBarcode() {
 
-tick();
-*/
+    barcode_result.textContent = "";        
+    
+    if (ZXing == null) {
+        stopbutton.disabled = false;
+        alert("Error con lector de barra!");
+        return;
+    }
+
+    var barcodeContext = canvas.getContext('2d');
+    barcodeContext.drawImage(video, 0, 0, 640, 480);
+    
+    // read barcode
+    var imageData = barcodeContext.getImageData(0, 0, 640, 480);
+    
+    var idd = imageData.data;
+    var image = ZXing._resize(640, 480);  
+    
+    for (var i = 0, j = 0; i < idd.length; i += 4, j++) {
+        ZXing.HEAPU8[image + j] = idd[i];
+    }
+
+    var err = ZXing._decode_any(decodePtr);
+    //console.timeEnd('decode barcode');
+    alert(err);
+    console.log("error code", err);
+    if (err == -2) {
+        setTimeout(camaraStop, 30);
+    }
+
+}
+
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
 function gotDevices(deviceInfos) {
@@ -132,12 +147,14 @@ function handleError(error) {
   console.log('Error: ', error);
 }
 
+startbutton.addEventListener('click', function(ev){ camaraStart();  ev.preventDefault();}, false);  
+stopbutton.addEventListener('click', function(ev){  camaraStop(); scanBarcode(); ev.preventDefault();}, false);
+
 $('#salir').html('<img src="img/salir.png">');
 $('#add').html('<img src="img/add.png">');
 $('#stopbutton').html('<img src="img/camaraboton.png">');
 
 </script>
-
 </body>
-</htm>
+</html>
 
