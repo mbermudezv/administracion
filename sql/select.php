@@ -36,6 +36,19 @@ class Select
 		    return $rs;
 	}
 
+	function conClienteEmail($id){
+		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);	
+		if ($pdo != null)		
+			$sql = $pdo->query('SELECT Cliente_Email FROM Cliente WHERE Cliente_id ='.$id.'');
+			$rs = [];
+			while ($row = $sql->fetch(\PDO::FETCH_ASSOC)) {
+		            $rs[] = [
+		            	'Cliente_Email' => $row['Cliente_Email']
+		            ];
+		    }
+		    return $rs;
+	}
+
 	function conCuentaCliente ($idCliente)
 	{
 		$pdo = new \PDO(DB_Str, DB_USER, DB_PASS);

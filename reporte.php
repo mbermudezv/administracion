@@ -91,7 +91,7 @@ $rsClienteAlias = null;
     <div class="imprimir"></div>
     <a id="hyp_excel" class="excel" href="reporte_exportar.php?clienteId=<?php echo $getCliente;?>&fechaDesde=<?php echo $getfecDesde;?>&fechaHasta=<?php echo $getfecHasta;?>&t=1"></a>
     <a id="hyp_excel" class="word" href="reporte_exportar.php?clienteId=<?php echo $getCliente;?>&fechaDesde=<?php echo $getfecDesde;?>&fechaHasta=<?php echo $getfecHasta;?>&t=2"></a>
-    <!-- <a id="hyp_excel" class="pdf" href="reporte_exportar.php?clienteId=<?php echo $getCliente;?>&fechaDesde=<?php echo $getfecDesde;?>&fechaHasta=<?php echo $getfecHasta;?>&t=3"></a>              -->
+    <a id="hyp_excel" class="email" href="reporte_exportar.php?clienteId=<?php echo $getCliente;?>&fechaDesde=<?php echo $getfecDesde;?>&fechaHasta=<?php echo $getfecHasta;?>&t=3"></a>
 </div>
 <div id="enc1" class="encabezado">
     <div id="log1" class="logo"></div>
@@ -170,7 +170,7 @@ $('.btnbuscar').html('<img src="img/refresh.png">');
 $('.imprimir').html('<img src="img/print.png">');
 $('.excel').html('<img src="img/excel.png">');
 $('.word').html('<img src="img/word.png">');
-$('.pdf').html('<img src="img/pdf.png">');
+$('.email').html('<img src="img/email.png">');
 $('.logo').html('<img src="img/escudo.png">');
 </script> 
 </body>

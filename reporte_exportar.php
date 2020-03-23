@@ -7,6 +7,7 @@ ini_set('html_errors', true);
 
 require_once("sql/select.php");
 try {
+$correo = "";
 
 if (isset($_GET['fechaDesde']) and isset($_GET['fechaHasta']) and isset($_GET['clienteId'])) {
 	$getfecDesde = $_GET['fechaDesde'];
@@ -15,7 +16,16 @@ if (isset($_GET['fechaDesde']) and isset($_GET['fechaHasta']) and isset($_GET['c
 	$db = new Select();
 	$rs = $db->conReporteCuentaCliente($getCliente,$getfecDesde,$getfecHasta);
     $rsCliente = $db->conClienteNombre($getCliente);
+    $rsEmail = $db->conClienteEmail($getCliente);
 }
+
+if(!empty($rsEmail)) {
+    foreach($rsEmail as $rsItemEmail) {
+        $correo = $rsItemEmail["Cliente_Email"];
+    }
+    $rsEmail=null;
+}
+
 
 } catch (PDOException $e) {
 	echo "Error al conectar con la base de datos: " . $e->getMessage() . "\n";
@@ -38,7 +48,7 @@ if (isset($_GET['t'])) {
         header("Pragma: no-cache");
         header("Expires: 0");
     	}else {           
-        	ob_start();
+        	//ob_start();
     	}    
 }
 
@@ -113,21 +123,31 @@ if (isset($_GET['t'])) {
     </tr>
    
 </table>
-<script>
+
+<script language='javascript'>
+
+var tipoExport = <?php echo $_GET['t']; ?>;
+var email = "mauriciobermudez@hotmail.com";
+
+if (tipoExport == 3) {    
+    var params = "email="+encodeURIComponent(email)+"&body="+encodeURIComponent(document.getElementsByTagName('body')[0].innerHTML);
+    var xhr=new XMLHttpRequest();
+    xhr.open('POST','https://www.wappcom.net/comedor/email_comprobante.php',true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-length", params.length);               
+    xhr.onload=function(e) {    
+        if (xhr.readyState === xhr.DONE) {
+            // Listo;                                                                            
+            if (xhr.status === 200) {
+                console.log(xhr.response);                                                                 
+            }  
+        }                   
+    };          
+    xhr.send(params);
+}
+
 $('.salir').html('<img src="img/lista.png">');
+
 </script>
 </body>
 </html>
-<?php 
-if (isset($_GET['t']) and $_GET['t'] == 3){
-    $salida_html = ob_get_contents();
-    ob_end_clean();  
-
-    require_once 'dompdf/dompdf_config.inc.php';
-    $dompdf = new DOMPDF();
-    $dompdf->load_html($salida_html);
-    $dompdf->set_paper ('letter','landscape'); 
-    $dompdf->render();
-    $dompdf->stream($archivo.".pdf");
-}
-?>
