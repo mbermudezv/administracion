@@ -78,7 +78,8 @@ class Select
 	                	'Cliente_Nombre' => $row['Cliente_Nombre'],
 	                	'Cliente_Apellido1' => $row['Cliente_Apellido1'],
 						'Cliente_Apellido2' => $row['Cliente_Apellido2'],
-						'Cliente_Email' => $row['Cliente_Email']
+						'Cliente_Email' => $row['Cliente_Email'],
+						'Cliente_id' => $row['Cliente_id']
 		            ];
 		    }
 		    return $rs;		

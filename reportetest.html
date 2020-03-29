@@ -104,7 +104,7 @@ const getfecHasta = document.getElementById("getfecHasta");
 const Cliente_Nombre = document.getElementById("Cliente_Nombre");
 const Cliente_Apellido1 = document.getElementById("Cliente_Apellido1");
 const Cliente_Apellido2 = document.getElementById("Cliente_Apellido2");
-const Cliente_Email = "";
+var Cliente_Email = "";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);    
@@ -116,14 +116,14 @@ function cargaDatos(){
 
     $.getJSON("sql/selectClienteGestor.php", { id: clienteId })
 		.done(function(data) {
-            console.log(data);
-            /*
+            
+            //console.log(data);                        
             Cliente_Nombre.innerHTML = data.Nombre;
             Cliente_Apellido1.innerHTML = data.Apellido1;
             Cliente_Apellido2.innerHTML = data.Apellido2;
             Cliente_Email = data.Email;
-            */
-        }).fail(function(jqXHR, textStatus, error) {            
+            
+        }).fail(function(jqXHR, textStatus, error) {						
 			console.log("Error de la aplicación: " + error);    			
 			$(body).append("Error al conectar con la base de datos: " + error);			
 		});
@@ -151,7 +151,7 @@ function mail() {
         xhr.open('POST','https://www.wappcom.net/comedor/email_comprobante.php',true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");            
         xhr.send(params);                     
-        txt.innerHTML = "Enviado con éxito a: " + email;
+        txt.innerHTML = "Enviado con éxito a: " + Cliente_Email;
         $('#hyp_mail').html('<img src="img/email.png">');
     }).fail(function(jqXHR, textStatus, error) {
         $('#hyp_mail').html('<img src="img/email.png">');			

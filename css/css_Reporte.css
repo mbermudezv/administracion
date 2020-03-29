@@ -80,8 +80,6 @@ body {
 }
 
 #aviso {
-  margin: 1vw 2vw;
-  padding: 2vw;
   text-overflow: ellipsis;
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
