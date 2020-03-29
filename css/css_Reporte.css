@@ -79,6 +79,16 @@ body {
   border-radius: 10px;
 }
 
+#aviso {
+  margin: 1vw 2vw;
+  padding: 2vw;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 1em;
+}
+
 .menu_export {
   background-color: transparent;
   display: -webkit-box;

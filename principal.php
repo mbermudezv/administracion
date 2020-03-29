@@ -38,7 +38,7 @@ foreach($rs as $rsCliente) {
 ?>
 <div id="div_boton" class="item" tabindex="1">
 	<a id="hyp_nombre" class="cell" href="cuenta.php?clienteId=<?php echo $rsCliente["Cliente_id"]; ?>"><?php echo $rsCliente["Cliente_Alias"]; ?></a>
-	<a id="hyp_reporte" class="cellBotonMenu" href="reporte.php?clienteId=<?php echo $rsCliente["Cliente_id"]; ?>"></a>	
+	<a id="hyp_reporte" class="cellBotonMenu" href="reportetest.html?clienteId=<?php echo $rsCliente["Cliente_id"]; ?>"></a>	
 </div>
 <?php 
 }

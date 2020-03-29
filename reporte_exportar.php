@@ -64,90 +64,94 @@ if (isset($_GET['t'])) {
 <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<table>
-	 <tr>
-    <!-- <td>
-        <img src="img/escudo.png" width="100" height="100" >    
-    </td> -->
-    <td style="padding: 2vw;">
-    <strong style="font-size: 2em; font-family: "Lucida Console", Monaco, monospace;">Informe estado de cuenta almuerzos</strong>
-    </td>
-    </tr>
-    <tr>
-    <?php
-    if(!empty($rsCliente)) {
-    foreach($rsCliente as $rsItemCliente) {
-    $nombrecompleto = $rsItemCliente["Cliente_Nombre"] . ' ' . $rsItemCliente["Cliente_Apellido1"] . ' ' . $rsItemCliente["Cliente_Apellido2"];
-    }
-    $rsCliente=null;
-    }
-    ?>
-    <td><?php echo $nombrecompleto; ?></td>            
-    </tr>
-    <?php
-    $desde_hasta = 'Desde: ' .  $getfecDesde . ' '. 'Hasta: ' . $getfecHasta;
-    ?>
-    <tr>
-        <td><?php echo $desde_hasta; ?></td>
-    </tr>
-    <tr>
-        <td>Fecha</td>
-        <td>Monto</td>
-    </tr>
-    <?php
-    if(!empty($rs)) {
-    foreach($rs as $rsCliente) {
-    $total = $total + $rsCliente["Monto"];
-    ?>
-    <tr>
-        <td> <?php echo $rsCliente["Fecha"]; ?> </td>
-        <td> <?php echo $rsCliente["Monto"]; ?> </td>
-    </tr>
-    <?php
-    }
-    }
-    $rs = null;
-    $db = null;
-    ?>    
-    <tr>
-        <td>Total:</td>
-        <td><?php echo $total; ?></td>
-    </tr>
-    <tr>
-        <td>-------------------------</td>
-        <td>-------------------------</td>
-    </tr>
-     <tr>
-        <td> <?php echo $nombrecompleto; ?></td>
-        <td> <?php echo "Comité de nutrición"; ?></td>
-    </tr>
-   
-</table>
+<div id="ContainerEmail">
+    <table>
+        <tr>
+        <!-- <td>
+            <img src="img/escudo.png" width="100" height="100" >    
+         </td>-->
+        <td style="padding: 2vw;">
+        <strong style="font-size: 2em; font-family: "Lucida Console", Monaco, monospace;">Informe estado de cuenta almuerzos</strong>
+        </td>
+        </tr>
+        <tr>
+        <?php
+        if(!empty($rsCliente)) {
+        foreach($rsCliente as $rsItemCliente) {
+        $nombrecompleto = $rsItemCliente["Cliente_Nombre"] . ' ' . $rsItemCliente["Cliente_Apellido1"] . ' ' . $rsItemCliente["Cliente_Apellido2"];
+        }
+        $rsCliente=null;
+        }
+        ?>
+        <td><?php echo $nombrecompleto; ?></td>            
+        </tr>
+        <?php
+        $desde_hasta = 'Desde: ' .  $getfecDesde . ' '. 'Hasta: ' . $getfecHasta;
+        ?>
+        <tr>
+            <td><?php echo $desde_hasta; ?></td>
+        </tr>
+        <tr>
+            <td>Fecha</td>
+            <td>Monto</td>
+        </tr>
+        <?php
+        if(!empty($rs)) {
+        foreach($rs as $rsCliente) {
+        $total = $total + $rsCliente["Monto"];
+        ?>
+        <tr>
+            <td> <?php echo $rsCliente["Fecha"]; ?> </td>
+            <td> <?php echo $rsCliente["Monto"]; ?> </td>
+        </tr>
+        <?php
+        }
+        }
+        $rs = null;
+        $db = null;
+        ?>    
+        <tr>
+            <td>Total:</td>
+            <td><?php echo $total; ?></td>
+        </tr>
+        <tr>
+            <td>-------------------------</td>
+            <td>-------------------------</td>
+        </tr>
+        <tr>
+            <td> <?php echo $nombrecompleto; ?></td>
+            <td> <?php echo "Comité de nutrición"; ?></td>
+        </tr>
+    
+    </table>
+
+</div> <!-- Container Email -->
 
 <script language='javascript'>
 
 var tipoExport = <?php echo $_GET['t']; ?>;
-var email = "mauriciobermudez@hotmail.com";
 
 if (tipoExport == 3) {    
-    var params = "email="+encodeURIComponent(email)+"&body="+encodeURIComponent(document.getElementsByTagName('body')[0].innerHTML);
-    var xhr=new XMLHttpRequest();
-    xhr.open('POST','https://www.wappcom.net/comedor/email_comprobante.php',true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.setRequestHeader("Content-length", params.length);               
-    xhr.onload=function(e) {    
-        if (xhr.readyState === xhr.DONE) {
-            // Listo;                                                                            
-            if (xhr.status === 200) {
-                console.log(xhr.response);                                                                 
-            }  
-        }                   
-    };          
-    xhr.send(params);
+    enviar();
 }
 
-$('.salir').html('<img src="img/lista.png">');
+function enviar() {
 
+        var email =  <?php echo "'". $correo ."'"; ?>;
+        var contenido = document.getElementsByTagName("body");        
+        var contenidojs = "<html>"+contenido[0].outerHTML+"</html>"                    
+        var params = "email="+encodeURIComponent(email)+"&body="+encodeURIComponent(contenidojs);        
+
+        var xhr=new XMLHttpRequest();
+        xhr.open('POST','https://www.wappcom.net/comedor/email_comprobante.php',true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");            
+        if (xhr.status == 200) {
+            console.log("Enviado ..");
+            } else {
+                console.log("Error " + xhr.status + " al enviar email");
+            }    
+        xhr.send(params);
+    }    
 </script>
 </body>
 </html>
