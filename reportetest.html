@@ -37,30 +37,26 @@ $( function() {
 </head>
 <body>
     <div class="menu">
-        <a id="menu1" class="salir" href="principal.php"></a>    
+        <a id="menu1" class="salir" href="principal.php"><img src="img/lista.png"></a>    
     </div>
-    <div id="bloque0" class="containerNombre">
-        <input type="text"  id="txtNombre" class="txtNombre" name="nombre" disabled="disabled" value="">
-    </div>
+    <div id="aviso"></div>  
     <div id="cont1" class="contDate">
         <div id="cont2" class="itemDate">
             <input id="inp1" type="text" name="fechaDesde" maxlength="10" autocomplete="off" class="datepicker" placeholder="  Fecha inicio..." readonly="readonly">
             <input id="inp2" type="text" name="fechaHasta" maxlength="10" autocomplete="off" class="datepicker" placeholder="  Fecha fin..." readonly="readonly">                    
         </div> 
-        <div id="btn1" class="btnbuscar" onclick="btnbuscar();"></div>
+        <div id="btn1" class="btnbuscar" onclick="btnbuscar();"><img src="img/refresh.png"></div>
     </div>
 
-    <div id= "aviso" ></div>    
-
     <div class="menu_export">
-        <div class="imprimir"></div>
-        <a id="hyp_excel" class="excel" ></a>
-        <a id="hyp_excel" class="word" ></a>
-        <a id="hyp_mail" class="email" onclick="mail();" ></a>    
+        <div  id="hyp_print" class="imprimir"><img src="img/print.png"></div>
+        <a id="hyp_excel" class="excel"><img src="img/excel.png"></a>
+        <a id="hyp_word" class="word"><img src="img/word.png"></a>
+        <a id="hyp_mail" class="email" onclick="mail();"><img src="img/email.png"></a>    
     </div>
 
     <div id="enc1" class="encabezado">
-        <div id="log1" class="logo"></div>
+        <div id="log1" class="logo"><img src="img/escudo.png"></div>
         <div id="tit1" class="titulo">Informe estado de cuenta almuerzos</div>
     </div>
     <div id="enc2" class="tabla_encabezado">       
@@ -75,26 +71,27 @@ $( function() {
         <div id="getfecHasta" class="tabla_encabezado_rango_item"></div>
     </div>
     <div id="tab1" class="tabla_titulo">
-        <div id="tab1" class="tabla_titulo_item">Fecha</div>
-        <div id="tab2" class="tabla_titulo_item">Monto</div>
-    </div>  
-    <div id="tab3" class="tabla">  
-    <div id="tab4" class="tabla_item">Fecha</div>
-    <div id="tab5" class="tabla_item">Monto</div>
-    </div>       
+        <div id="tituloFecha" class="tabla_titulo_item">Fecha</div>
+        <div id="tituloMonto" class="tabla_titulo_item">Monto</div>
+    </div>
+    <div id="plantilla">  
+        <div id="tabla_Detalle" class="tabla">        
+                <div id="Fecha" class="tabla_item"></div>
+                <div id="Monto" class="tabla_item"></div>
+        </div>
+    </div>
     <div id="tab6" class="tabla_titulo">
         <div id="tab7" class="tabla_titulo_item">Total:</div>
-        <div id="tab8" class="tabla_titulo_item">total</div>
+        <div id="total" class="tabla_titulo_item"></div>
     </div>
     <div id="tab9" class="contendor_linea_firma">
         <div id="tab10" class="linea_firma">-------------------------</div>
         <div id="tab11" class="linea_firma">-------------------------</div>
     </div>
     <div id="tab12" class="contenedor_nombre_firma">
-        <div id="tab13" class="item_nombre_firma">nombrecompleto</div>
+        <div id="nombreCompleto" class="item_nombre_firma">nombrecompleto</div>
         <div id="tab14" class="item_nombre_firma">Por Comité de nutrición</div>
     </div>
-<div id="test"></div>
 
 <script>
 
@@ -104,16 +101,16 @@ const getfecHasta = document.getElementById("getfecHasta");
 const Cliente_Nombre = document.getElementById("Cliente_Nombre");
 const Cliente_Apellido1 = document.getElementById("Cliente_Apellido1");
 const Cliente_Apellido2 = document.getElementById("Cliente_Apellido2");
+var Cliente_Nombre_Completo = document.getElementById("nombreCompleto");
 var Cliente_Email = "";
+var Nombre_Completo = "";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);    
 const clienteId = urlParams.get('clienteId');
 
-txt.innerHTML = "";
-
 function cargaDatos(){
-
+    
     $.getJSON("sql/selectClienteGestor.php", { id: clienteId })
 		.done(function(data) {
             
@@ -122,17 +119,72 @@ function cargaDatos(){
             Cliente_Apellido1.innerHTML = data.Apellido1;
             Cliente_Apellido2.innerHTML = data.Apellido2;
             Cliente_Email = data.Email;
+            Nombre_Completo = data.Nombre + " " + data.Apellido1 + " " + data.Apellido2;
+            Cliente_Nombre_Completo.innerHTML = Nombre_Completo;
             
         }).fail(function(jqXHR, textStatus, error) {						
 			console.log("Error de la aplicación: " + error);    			
 			$(body).append("Error al conectar con la base de datos: " + error);			
 		});
 
+    return 0;
 }
 
 cargaDatos();
 
 function btnbuscar() {
+
+    var fechaDesde = document.getElementById("inp1").value;
+    var fechaHasta = document.getElementById("inp2").value;
+    const fechaDesdeTitulo = document.getElementById("getfecDesde");
+    const fechaHastaTitulo = document.getElementById("getfecHasta");
+
+    $('#btn1').html('<img src="img/cargando.gif">');
+    $('.tabla').remove();
+    txt.innerHTML = "";
+
+    $.getJSON("sql/selectCuentaClienteGestor.php", { id: clienteId, fechaDesde: fechaDesde, fechaHasta: fechaHasta })		
+        .done(function(data) {
+
+        $('#btn1').html('<img src="img/refresh.png">');    
+        //console.log(data);
+        const plantilla = document.getElementById("plantilla");
+        const total = document.getElementById("total");
+
+        var montototal = 0;    
+        $.each(data, function(i, linkData) {
+                        
+            var tabla = document.createElement('div');
+            tabla.id="tabla_Detalle";
+            tabla.className = "tabla";
+
+            var Fecha = document.createElement('div');
+            Fecha.id = "Fecha";
+            Fecha.className = "tabla_item";
+            Fecha.innerText=linkData.Fecha;
+            tabla.appendChild(Fecha);
+
+            var Monto = document.createElement('div');
+            Monto.id = "Monto";
+            Monto.className = "tabla_item";
+            Monto.innerText=linkData.Monto;
+            tabla.appendChild(Monto);
+
+            plantilla.appendChild(tabla);
+
+            montototal = Number(montototal) + Number(linkData.Monto);
+            
+        }); 
+
+        total.innerText=Number(montototal);
+        fechaDesdeTitulo.innerText=fechaDesde;
+        fechaHastaTitulo.innerText=fechaHasta;
+
+        }).fail(function(jqXHR, textStatus, error) {						
+			console.log("Error de la aplicación: " + error);    			
+			$(body).append("Error al conectar con la base de datos: " + error);			
+		});
+        
     return 0;
 }
 
@@ -174,14 +226,6 @@ $(document).ready(function() {
         $('.menu_export').show();        
     });
 });
-
-$('.salir').html('<img src="img/lista.png">');
-$('.btnbuscar').html('<img src="img/refresh.png">');
-$('.imprimir').html('<img src="img/print.png">');
-$('.excel').html('<img src="img/excel.png">');
-$('.word').html('<img src="img/word.png">');
-$('.email').html('<img src="img/email.png">');
-$('.logo').html('<img src="img/escudo.png">');
 
 </script> 
 

@@ -11,6 +11,14 @@ body {
   flex-direction: column;	
 	background-color: #303030;	
 }
+
+// #menu1, #btn1 #hyp_print #hyp_excel, #hyp_word, #hyp_mail, #log1{
+//   display:flex;  
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+// }
+
 .menu_container{
     display: flex;
     justify-content: center;
@@ -52,7 +60,9 @@ body {
   background-color: transparent;
   font-family: "Lucida Console", Monaco, monospace;
   color: white;
-  font-size: 1em;   
+  font-size: 1em;
+  text-align: center;
+
 }
 .menu_export {
   background-color: transparent;
