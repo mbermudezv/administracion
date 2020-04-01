@@ -5,6 +5,7 @@ var tick = function () {
 if (window.ZXing) {
   ZXing = ZXing();
   decodePtr = ZXing.Runtime.addFunction(decodeCallback);
+  
 } else {
   setTimeout(tick, 10);
 }
@@ -28,7 +29,7 @@ function scanBarcode() {
       alert("Error con lector de barra!");
       return 0;
   }
-
+  
   var context = null;
   context = ctx;
   
@@ -53,12 +54,14 @@ function scanBarcode() {
   for (var i = 0, j = 0; i < idd.length; i += 4, j++) {
       ZXing.HEAPU8[image + j] = idd[i];
   }
-
+  
   var err = ZXing._decode_any(decodePtr);
+  //alert(err);
   console.timeEnd('decode barcode');
   console.log("error code", err);
   if (err == -2) {
       setTimeout(scanBarcode, 30);
+      return 0;
   }
 
 }

@@ -1,3 +1,9 @@
+$margenTablaMovil : 0.30%;
+$paddinTablaMovil : 0.30%;
+$margenMovilTablaItemCol : 0.50%;
+$paddinMovilTablaItemCol : 0.50%;
+$fontMovil: 1em;
+
 @viewport {
     width: device-width;
 }
@@ -42,8 +48,31 @@ body {
 #mainArea {
     flex-grow: 1;
     display: flex;
+    flex-flow: column nowrap;  
 }
 
+#contenedor_Fila {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;   
+}
+
+#contenedor_Fila * {
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;
+}
+
+#contenedor_FilaButtom {
+    display: flex;
+    justify-content: space-around;
+}
+
+#contenedor_FilaButtom * {
+    margin: $margenTablaMovil;
+    padding: $paddinTablaMovil;
+}
 #contenedorMenu{
 	display: flex;
     flex-direction: column;
@@ -116,6 +145,25 @@ body {
     display: flex;
     flex-flow: column wrap;
 	//padding: 10px;
+}
+
+#dbr{
+    display: flex;
+    justify-content: center; 
+    background-color: transparent;
+	font-family: "Lucida Console", Monaco, monospace;	
+	color: white;
+    font-size: $fontMovil;
+    margin: $margenMovilTablaItemCol;
+    padding: $paddinMovilTablaItemCol;
+    text-decoration: none;    
+}
+
+.txtDescripcion {
+    flex-grow: 1;
+	background-color: black;
+	color: white;	
+	font-family: "Lucida Console", Monaco, monospace;    
 }
 
 #containerButton{

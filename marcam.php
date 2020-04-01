@@ -28,7 +28,7 @@ try
     <title>Marca</title>    
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
     <script async src="js/zxing.js"></script>
-    <script type="text/javascript" src="js/barcode.js"></script>    
+    <script type="text/javascript" src="js/barcode.js?<?php echo rand(); ?>"></script>    
     <script type="text/javascript" src="js/camara.js"></script> 
 </head>
 <body>
@@ -36,28 +36,26 @@ try
 	<a id="salir" href="seleccion.php"></a>
 	<a id="add" href="busca_Estudiante.php?tipo=<?php echo $getTipoMarca; ?>"></a>	
 </div>
- <div id="mainArea"> 
+<div id="mainArea"> 
     <!-- Contenedor de proceso marca -->
-    <div id="contenedorMarca"> 
-      <div id="containerTxt">
+     <div id="contenedor_Fila">
+          <select id="videoSource" class="txtDescripcion"></select>
+     </div>
+     <div id="contenedor_Fila">
+      <div id="dbr"></div> 
+      <!-- <div id="containerTxt">
         <div>Cédula: <span id="dbr"></span></div>        
-      </div>
-      <div class="select"><label for="videoSource">Video source: </label>
-        <select id="videoSource"></select>
-      </div>   
-      <div id="containerButton">           
+      </div> -->
+    </div>     
+ 
+      <div id="contenedor_FilaButtom">           
           <button id="startbutton"></button>    
           <button id="stopbutton"></button>
       </div>    	    
-      <video id="video" autobuffer></video>
-      <canvas id="canvas" width="240" height="320"></canvas>
-       <!-- <img id="photo"> -->
-    </div> 
-</div> 
-<div id="statusBar">
-    <a id="linkHogar" href="https://www.lasesperanzas.ed.cr">lasesperanzas.ed.cr</a>
-    <a id="linkWappcom"href="https://www.wappcom.net">wappcom.net</a>                                       
 </div>
+<video id="video" autobuffer></video>
+<canvas id="canvas" width="240" height="320"></canvas>
+<!-- <img id="photo"> -->
 
 <script language='javascript'>
 
