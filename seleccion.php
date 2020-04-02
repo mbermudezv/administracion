@@ -26,7 +26,7 @@ ini_set('html_errors', true);
 	<a id="imprimir" class="imprimir" href="reporte_almuerzo.php"></a>
 	<a id="estudiante" href="estudiante_Mantenimiento.php"></a>
 	<a id="upload" href="cargar_Excel.html"></a>
-	<a id="camera" href="marcam.php"></a>	
+	<a id="camera" href="marcam.php?&sinSolicitud=0"></a>	
 </div>
 
 <div class="container">

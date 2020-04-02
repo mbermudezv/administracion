@@ -24,11 +24,11 @@ try
     <meta charset="utf-8">
     <meta name="autor" content="Mauricio Bermúdez Vargas"/>
     <meta name="viewport" content="width=device-width"/>
-    <link rel="stylesheet" type="text/css" href="css/css_marcam.css?<?php echo rand(); ?>">
+    <link rel="stylesheet" type="text/css" href="css/css_marcam.css">
     <title>Marca</title>    
     <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
     <script async src="js/zxing.js"></script>
-    <script type="text/javascript" src="js/barcode.js?<?php echo rand(); ?>"></script>    
+    <script type="text/javascript" src="js/barcode.js?<?php echo rand(1000,9999)?>"></script>    
     <script type="text/javascript" src="js/camara.js"></script> 
 </head>
 <body>
@@ -43,9 +43,7 @@ try
      </div>
      <div id="contenedor_Fila">
       <div id="dbr"></div> 
-      <!-- <div id="containerTxt">
-        <div>Cédula: <span id="dbr"></span></div>        
-      </div> -->
+      <div id="divNombre"></div>      
     </div>     
  
       <div id="contenedor_FilaButtom">           
@@ -67,7 +65,7 @@ var streaming = false,
   barcode_result = document.getElementById('dbr'),
   width = 240,
   height = 320;
-
+  
   //photo        = document.querySelector('#photo'),  
 
 startbutton.addEventListener('click', function(ev){ camaraStart(); ev.preventDefault();}, false);

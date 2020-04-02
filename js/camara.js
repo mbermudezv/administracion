@@ -3,7 +3,9 @@ var camaraActivar, camaraFoto;
 const camaraControl = () =>
   new Promise(async resolve => {    
 
-    var videoSelect = document.getElementById('videoSource');
+    var videoSelect = document.getElementById('videoSource');   
+    barcode_result.textContent = "";
+    document.getElementById("divNombre").innerText = "";
 
     var constraints = {
       video: {
