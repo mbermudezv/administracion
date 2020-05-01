@@ -51,7 +51,7 @@ $( function() {
     <div class="menu_export">
         <div  id="hyp_print" class="imprimir"><img src="img/print.png"></div>
         <a id="hyp_excel" class="excel"><img src="img/excel.png"></a>
-        <a id="hyp_word" class="word"><img src="img/word.png"></a>
+        <!-- <a id="hyp_word" class="word"><img src="img/word.png"></a> -->
         <a id="hyp_mail" class="email" onclick="mail();"><img src="img/email.png"></a>    
     </div>
 
@@ -189,7 +189,11 @@ function btnbuscar() {
 }
 
 function mail() {
-
+    
+    //Por si se puede enviar todo el body como está
+    /* var contenido = document.getElementsByTagName("body");        
+    var contenidojs = "<html>"+contenido[0].outerHTML+"</html>"  
+    */
     var fechaDesde = document.getElementById("inp1").value;
     var fechaHasta = document.getElementById("inp2").value;
     
