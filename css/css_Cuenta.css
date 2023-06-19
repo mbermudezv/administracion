@@ -1,15 +1,9 @@
-@-ms-viewport {
-  width: device-width;
-}
-
 @-o-viewport {
   width: device-width;
 }
-
 @viewport {
   width: device-width;
 }
-
 html {
   overflow-y: auto;
 }
@@ -23,28 +17,16 @@ canvas {
 
 body {
   margin: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background-color: #303030;
 }
 
 .menu {
   background-color: #499bea;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   padding: 0.5em;
   border-radius: 10px;
 }
@@ -57,13 +39,8 @@ body {
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .txtNombre {
@@ -90,24 +67,15 @@ body {
 }
 
 .containerCalc {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   font-family: "Courier New", Courier, monospace;
   font-size: 5em;
 }
 
 .quin {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background: black;
   color: white;
   text-align: center;
@@ -118,9 +86,7 @@ body {
 }
 
 .cuat {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background: black;
   color: white;
   text-align: center;
@@ -131,9 +97,7 @@ body {
 }
 
 .tres {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background: black;
   color: white;
   text-align: center;
@@ -144,9 +108,7 @@ body {
 }
 
 .dosi {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background: black;
   color: white;
   text-align: center;
@@ -157,9 +119,7 @@ body {
 }
 
 .limpiar {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   background: #212121;
   color: white;
   text-align: center;
@@ -170,12 +130,8 @@ body {
 }
 
 .guardar {
-  -webkit-box-flex: 4;
-      -ms-flex-positive: 4;
-          flex-grow: 4;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  flex-grow: 4;
+  align-self: center;
   background: #499bea;
   text-align: center;
   border-radius: 15px;
@@ -191,5 +147,4 @@ body {
   .container .txtMonto {
     padding: 1vw;
   }
-}
-/*# sourceMappingURL=css_Cuenta.css.map */
+}/*# sourceMappingURL=css_Cuenta.css.map */

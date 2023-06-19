@@ -1,52 +1,30 @@
-@-ms-viewport {
-  width: device-width;
-}
-
 @-o-viewport {
   width: device-width;
 }
-
 @viewport {
   width: device-width;
 }
-
 html {
   overflow-y: auto;
 }
 
 body {
   margin: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background-color: #303030;
 }
 
 .menu_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .menu {
   background-color: #499bea;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-between;
   padding: 0.5em;
   border-radius: 10px;
 }
@@ -59,13 +37,8 @@ body {
 }
 
 .containerNombre {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+  flex-flow: column wrap;
 }
 
 .txtNombre {
@@ -90,16 +63,9 @@ body {
 
 .menu_export {
   background-color: transparent;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
   border-radius: 10px;
 }
 
@@ -110,28 +76,15 @@ body {
   padding: 1vw;
   border-radius: 50%;
   background: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .contDate {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .contDate * {
@@ -140,19 +93,10 @@ body {
 }
 
 .itemDate {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 0 0 50%;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  flex-flow: row wrap;
+  justify-content: flex-end;
 }
 
 .itemDate * {
@@ -161,20 +105,11 @@ body {
 }
 
 .btnbuscar {
-  -ms-flex-item-align: center;
-      align-self: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-self: center;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
 }
 
 .btnbuscar {
@@ -185,7 +120,7 @@ body {
 }
 
 .ui-datepicker {
-  padding: .2em .2em 0;
+  padding: 0.2em 0.2em 0;
   display: none;
   background: #499bea;
 }
@@ -200,10 +135,10 @@ body {
 
 .ui-datepicker table {
   width: 100%;
-  font-size: .8em;
+  font-size: 0.8em;
   border-collapse: collapse;
   font-family: verdana;
-  margin: 0 0 .4em;
+  margin: 0 0 0.4em;
   color: white;
   background: #303030;
 }
@@ -217,15 +152,13 @@ body {
 .ui-datepicker td span,
 .ui-datepicker td a {
   display: block;
-  padding: .8em;
+  padding: 0.8em;
   text-align: right;
   text-decoration: underline;
   color: white;
 }
 
 .encabezado {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: white;
   border-radius: 10px;
@@ -234,8 +167,6 @@ body {
 }
 
 .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -244,27 +175,15 @@ body {
   height: 6em;
   margin: 1vw;
   padding: 1vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .titulo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   margin: 2vw;
   padding: 2vw;
@@ -279,11 +198,8 @@ body {
 }
 
 .tabla_encabezado {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   font-size: 1em;
   background-color: white;
   border-radius: 5px;
@@ -299,11 +215,8 @@ body {
 }
 
 .tabla_encabezado_rango {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
   text-overflow: ellipsis;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 1em;
@@ -318,8 +231,6 @@ body {
 }
 
 .tabla_titulo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-overflow: ellipsis;
   font-family: "Lucida Console", Monaco, monospace;
@@ -328,9 +239,7 @@ body {
 }
 
 .tabla_titulo_item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   color: black;
   text-align: center;
   margin: 1vw;
@@ -339,8 +248,6 @@ body {
 }
 
 .tabla {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-overflow: ellipsis;
   font-family: "Lucida Console", Monaco, monospace;
@@ -349,33 +256,25 @@ body {
 }
 
 .tabla_item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   color: black;
   text-align: center;
   margin: 1vw;
 }
 
 .contendor_linea_firma {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: white;
 }
 
 .linea_firma {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   margin: 2vw;
   color: black;
   text-align: center;
 }
 
 .contenedor_nombre_firma {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-overflow: ellipsis;
   font-family: "Lucida Console", Monaco, monospace;
@@ -384,12 +283,9 @@ body {
 }
 
 .item_nombre_firma {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   color: black;
   text-align: center;
   margin: 1vw;
   border-style: none;
-}
-/*# sourceMappingURL=css_Reporte.css.map */
+}/*# sourceMappingURL=css_Reporte.css.map */
